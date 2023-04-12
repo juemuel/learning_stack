@@ -1,0 +1,50 @@
+
+
+# Git分支实践
+	- dev修改、提交、远程main 同意PR、main
+	- 常用分支：main、dev、feature、release、hotfix
+		- Production分支：之前的`master`、现在的`main`分支｜<font color="#92cddc">生产环境的分支，不修改只合并</font>
+		- Develop分支：`dev`分支｜<font color="#92cddc">多人合作下开发环境的分支，主要是合并</font>
+		- Feature分支：`feature`分支｜<font color="#92cddc">日常做功能开发的分支，合并到dev</font>
+		- Release分支：基于dev分支发布`release`分支｜<font color="#92cddc">靠谱而正式的版本更新</font>
+		- Tips：dev用来合并，那么mater其实已经可以用于做release了～
+		- Hotfix分支：Production中发生bug时，创建hotfix
+		- 如图：
+			- ![](../../../../../../S-Attachment/gitbranch001.png)
+	- 工具：Git flow、git flow GUI
+	- 远程两个的环境：origin/main、origin/dev
+		- 克隆dev版本为本地main：`git clone https://github.com/master-dev.git`
+		- 查看分支：`git branch --all`
+			- main、origin/main、origin/dev
+		- 创建本地dev：`git checkout dev origin/dev`
+		- 切换到本地dev：`git chekout dev`
+	- 远程只有一个的环境：origin/main
+		- 克隆main版本为本地main：`git clone https://github.com/master-dev.git`
+		- 创建本地dev：`git branch dev`
+		- 创建远程dev：`git push origin dev:dev`
+		- 切换本地dev开发：`git checkout dev`
+		- 若dev开发功能完成
+			- 合并本地main并提交：`git chekout main`、`git merge dev`、`git push`
+			- 提交dev：`git checkout dev`、`git push`
+		- 若dev开发功能未完成
+			- 提交dev：`git push`
+	- ❓ 当 本地分支 is behind 对应远程分支：拉取main ^91fd30
+		- git checkout main
+		- git fetch origin main
+		- git merge FETCH_HEAD
+	- ❓ 当 本地分支 is ahead 对应远程分支：提交main
+		- #1 提交方案：
+			- `git checkout xxx`
+			- `git push origin xxx`
+		- #2 撤回
+			- git fetch --all			- git pull
+			- git reset --hard origin/xxx
+	- ❓当 本地dev 和 本地main 不同步，希望 同步为 main
+		- 方案1
+			- [先拉取main](#^91fd30)，保证main是最新同步状态
+			- git checkout dev
+			- git merge main
+			- git push origin dev
+		- 方案2
+			- git rebase main
+			- git rebase main dev
