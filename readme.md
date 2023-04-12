@@ -1,6 +1,8 @@
 
 
 # Git分支实践
+
+- Git分支实践
 	- dev修改、提交、远程main 同意PR、main
 	- 常用分支：main、dev、feature、release、hotfix
 		- Production分支：之前的`master`、现在的`main`分支｜<font color="#92cddc">生产环境的分支，不修改只合并</font>
@@ -10,7 +12,7 @@
 		- Tips：dev用来合并，那么mater其实已经可以用于做release了～
 		- Hotfix分支：Production中发生bug时，创建hotfix
 		- 如图：
-			- ![](../../../../../../S-Attachment/gitbranch001.png)
+			- ![gitbranch001](https://user-images.githubusercontent.com/52780296/231405159-c4c09516-1f9d-42d0-be9c-5478fd623a67.png)
 	- 工具：Git flow、git flow GUI
 	- 远程两个的环境：origin/main、origin/dev
 		- 克隆dev版本为本地main：`git clone https://github.com/master-dev.git`
@@ -24,7 +26,8 @@
 		- 创建远程dev：`git push origin dev:dev`
 		- 切换本地dev开发：`git checkout dev`
 		- 若dev开发功能完成
-			- 合并本地main并提交：`git chekout main`、`git merge dev`、`git push`
+			- 合并本地main并提交：`git chekout main`、`git merge dev`、`git push`![gitbranch001](https://user-images.githubusercontent.com/52780296/231405068-2c76677e-0660-4d04-ae12-c3066c2ae6c0.png)
+
 			- 提交dev：`git checkout dev`、`git push`
 		- 若dev开发功能未完成
 			- 提交dev：`git push`
