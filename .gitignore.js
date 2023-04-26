@@ -1,0 +1,14 @@
+.DS_Store
+*/node_modules/
+*/dist/
+*.exe
+*.o
+*.pyc
+*.swp
+npm-debug.log
+
+current_deploy.sh
+package-lock.json
+docs/.vitepress/
+.idea
+.vscode

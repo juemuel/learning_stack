@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 参考官方wiki：https://github.com/d3/d3/wiki/CN-Home -->
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<style>
+		  .bar:hover {
+		    fill: brown;
+		  }
+		</style>
+		<body>
+		  <script>
+		    const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+		    const w = 500;
+		    const h = 100;
+		    const svg = d3.select("body")
+		                  .append("svg")
+		                  .attr("width", w)
+		                  .attr("height", h);
+		
+				// 用SVG元素的rect来创建
+		    svg.selectAll("rect")
+		       .data(dataset)
+		       .enter()
+		       .append("rect")
+		       .attr("x", (d, i) => i * 30)
+		       .attr("y", (d, i) => h - 3 * d)
+		       .attr("width", 25)
+		       .attr("height", (d, i) => d * 3)
+		       .attr("fill", "navy")
+		       .attr("class", "bar")
+					 // bar的悬浮信息
+		       .append("title")
+		       .text((d) => d)
+		
+		    svg.selectAll("text")
+		       .data(dataset)
+		       .enter()
+		       .append("text")
+		       .text((d) => d)
+		       .attr("x", (d, i) => i * 30)
+		       .attr("y", (d, i) => h - (d * 3 + 3))
+		
+		  </script>
+		</body>
+	</head>
+	<body>
+		
+	</body>
+</html>

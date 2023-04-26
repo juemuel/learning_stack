@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<script>
+<!--    1.js通过id实现提交-->
+    // 请求类型、url暴露
+    // function checkForm() {
+    //     $("#myform").submit()
+    // }
+
+/*
+   2：首先要加载完成*/
+    $(document).ready(function() {
+        // 2.1 通过id实现点击和提交（请求类型、url暴露）
+        // $("#myform").click(function () {
+        //     $("#myform").submit()
+        // })
+
+        // 2.2 ajax方式发起请求（请求类型、url均不暴露）
+        // serialize取出表达中的数据，并序列化
+        // success回调函数，自动接收服务端返回的数据data
+        // 方便测试直接加载了，可以写个函数，由html调用onclick
+        $.ajax({
+            type:"post",
+            url:"http://127.0.0.1:8000",
+            data: $("#myform").serialize(),
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    })
+</script>
+
+<body>
+<!-- html控制url、method-->
+<!--    <form id="myform" action="http://127.0.0.1:8000" method="GET" >-->
+<!--        <input type="text" name="name"/>-->
+<!--        <input type="password" name="password">-->
+<!--        <input type="button" onclick="checkForm();" value="登录">-->
+<!--    </form>-->
+
+<!-- html控制url、method-->
+<!-- 改成multipart/form-data配合POST-->
+<!--分隔符形式适合传复杂文件-->
+<!--    <form id="myform" action="http://127.0.0.1:8000" method="POST" enctype="multipart/form-data">-->
+<!--        <input type="text" name="name"/>-->
+<!--        <input type="password" name="password">-->
+<!--        <input type="file" name="file">-->
+<!--        <input type="button" value="登录">-->
+<!--    </form>-->
+
+<!-- 均由ajax控制-->
+    <form id="myform" >
+        <input type="text" name="name"/>
+        <input type="password" name="password">
+        <input type="file" name="file">
+        <input type="button" value="登录">
+    </form>
+
+</body>
+</html>
+
+
