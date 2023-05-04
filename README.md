@@ -17,6 +17,10 @@
     - P4. 动态圆形A对静态圆形B的区域做碰撞检测，进入区域变色，出去恢复；
     - P5. 使用Array维护多个生产的动态圆形
     - P6. 将IMAGE做成canvas LOGO（调整位置、形状） 
+    - P7. 交互事件（点击变色）
+    - P8. 线状图表
+    - P9. 绘画板App
+    - P10.拖拽canvas图形 
     - TODO：当选择P3后，无法切回P1 P2 的 js样式
 - uni_cloud_learning
     - uni-app、uni-cloud
