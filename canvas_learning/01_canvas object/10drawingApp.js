@@ -31,6 +31,7 @@ function start(event){
   is_drawing = true;
   event.preventDefault();  
   context.beginPath();
+  //TODO：这边clientX失效只能用pageX的原因？考虑通过canvas.onmousedown来实现？类似dragObject.js中那样
   console.log(event.pageX)
   context.moveTo(event.pageX - canvas.offsetLeft,
                  event.pageY - canvas.offsetTop);
