@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="player.js"></script>
+    <script src="fx.js"></script>
+    <script src="game.js"></script>
+    <script src="gameloop.js"></script>
+    <script src="gui.js"></script>
+    <script src="index.js"></script>
+    <script src="asteroids.js"></script>
+    
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div id="load" class="screen" style="display: block;">
+      Loading, please wait ...
+    </div>
+    <div id="start" class="screen" style="display: none;">
+      <img src="assets/asteroids-splash.png" style="display: block">
+      <button onclick="window.gui.startGame()">Let's play</button>
+    </div>
+    <div id="end" class="screen" style="display: none;">
+      <img src="assets/asteroids-splash.png" style="display: block">
+      <button onclick="window.gui.startGame()">Start Again</button>
+    </div>
+  </body>
+</html>
