@@ -22,7 +22,6 @@ myButton02.addEventListener('click', function() {
   document.close();  
 });  
 
-
 const myButton03 = document.getElementById('button03');  
 myButton03.addEventListener('click', function() {      
   window.animationFrameId = null;
@@ -53,6 +52,39 @@ myButton05.addEventListener('click', function() {
   const scriptTag = document.createElement('script');  
   scriptTag.src = '05dynamic_obj_array.js';  
   scriptTag.setAttribute('id', 'script5');  
+  document.head.appendChild(scriptTag);  
+  document.close();  
+});  
+
+const myButton06 = document.getElementById('button06');  
+myButton06.addEventListener('click', function() {      
+  window.animationFrameId = null;
+  // 同理，可以加载另一个 JavaScript 文件  
+  const scriptTag = document.createElement('script');  
+  scriptTag.src = '06image_logo.js';  
+  scriptTag.setAttribute('id', 'script6');  
+  document.head.appendChild(scriptTag);  
+  document.close();  
+});  
+
+const myButton07 = document.getElementById('button07');  
+myButton07.addEventListener('click', function() {      
+  window.animationFrameId = null;
+  // 同理，可以加载另一个 JavaScript 文件  
+  const scriptTag = document.createElement('script');  
+  scriptTag.src = '07interaction.js';  
+  scriptTag.setAttribute('id', 'script7');  
+  document.head.appendChild(scriptTag);  
+  document.close();  
+});  
+
+const myButton08 = document.getElementById('button08');  
+myButton08.addEventListener('click', function() {      
+  window.animationFrameId = null;
+  // 同理，可以加载另一个 JavaScript 文件  
+  const scriptTag = document.createElement('script');  
+  scriptTag.src = '08line_graph.js';  
+  scriptTag.setAttribute('id', 'script8');  
   document.head.appendChild(scriptTag);  
   document.close();  
 });  

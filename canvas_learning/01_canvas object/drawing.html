@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href='favicon.ico' type="image/ico"/>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <title>绘画板</title>
+  </head>
+  <body>
+    <div class="field">
+      <canvas id="canvas"></canvas>
+      <div class="tools">
+        <button onClick="undo_last()" type="button" class="button">Undo</button>
+        <button onClick="clear_canvas()" type="button" class="button">Clear</button>
+        <div onclick="change_color(this)" class="color-field" style="background-color: red"></div>
+        <div onclick="change_color(this)" class="color-field" style="background-color: black"></div>
+        <div onclick="change_color(this)" class="color-field" style="background-color: blue"></div>
+        <div onclick="change_color(this)" class="color-field" style="background-color: yellow"></div>
+        
+        <input onInput="draw_color = this.value" type="color" class="color-picker" />
+        <input onInput="draw_width = this.value" type="range" min="1" max="100" class="pen-range" />
+      </div>
+    </div>
+  </body>
+  <script src="09drawingApp.js"></script>
+</html>

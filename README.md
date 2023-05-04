@@ -16,8 +16,8 @@
     - P3. 生成动态圆形并对窗口边缘做碰撞检测，碰到边缘弹射collision detection、requestAnimationFrame
     - P4. 动态圆形A对静态圆形B的区域做碰撞检测，进入区域变色，出去恢复；
     - P5. 使用Array维护多个生产的动态圆形
-    - P6. 使用canvas绘制LOGO IMAGE
-    - TODO：当选择P3后，无法切回其他js样式
+    - P6. 将IMAGE做成canvas LOGO（调整位置、形状） 
+    - TODO：当选择P3后，无法切回P1 P2 的 js样式
 - uni_cloud_learning
     - uni-app、uni-cloud
     - 留言墙demo：使用uni_cloud完成支持图片、文本上传的留言墙
