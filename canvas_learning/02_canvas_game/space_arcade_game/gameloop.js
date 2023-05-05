@@ -1,3 +1,4 @@
+// 用setInterval控制的Game刷新
 class GameLoop{
   constructor(game){
     this.loop = null;

@@ -11,7 +11,7 @@ class Gui{
   resize(){
     if(this.cnv){
       this.cnv.width = window.innerWidth;
-      this.cnv.hegith = window.innerHeight;
+      this.cnv.height = window.innerHeight;
     }
   }
   // 1. 调整为canvas为屏幕大小

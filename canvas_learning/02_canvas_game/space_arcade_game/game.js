@@ -1,3 +1,9 @@
+/**
+ * 结构
+ * Game(fx)
+ *    player(fx)
+ *      keyhandler
+ */
 class Game{
   constructor(){
     this.fx = new Fx();
@@ -5,13 +11,12 @@ class Game{
   }
   
   init(){
-    console.log("game init");
+    // console.log("game init");
     this.fx.init();
     this.player.init();
   }
   
   resize(){
-    console.log("game resize")
   }
   
   update(){
