@@ -50,11 +50,9 @@ class Player{
     // console.log("画布宽度高度",this.fx.cnv.width,this.fx.cnv.height,"player位置",this.x,this.y)
     // 出界效果
     if(this.x > this.fx.cnv.width){
-      console.log("出右边界")
       this.x = 0 - this.img.width/2;
     }
     if(this.x + this.img.width < 0){
-      console.log("出左边界")
       this.x = this.fx.cnv.width;
     }
     if(this.y > this.fx.cnv.height){

@@ -70,6 +70,7 @@ class Asteroid{
   render(){
     if(this.active){
       this.fx.rotateAndDrawImage(this.img, this.x, this.y, this.rotation);
+      this.fx.drawCircle(this.x,this.y,5, "gray")
     }
   }
   collisionDetected(){
@@ -77,12 +78,14 @@ class Asteroid{
   }
   
   hasCollideWithEntity(entity){
-    if(!this.active || !entity.active){return false;}
-    // 四个边界外的判定
+    if(!this.active || !entity.active) return false;
+    // 保证在地图内才能被击毁
+    if(this.x<0 || this.y<0 || entity.x <0 || entity.y <0) return false;
+    // 四个边界外的判定，注意细节～可以先把x,y描出来
     let aLeftOfB = (entity.x + entity.size) < (this.x);
-    let aBelowB = (entity.y + entity.size) < (this.y);
+    let aBelowB = (entity.y + entity.size) > (this.y + this.img.height);
     let aRightOfB = (entity.x) > ( this.x + this.img.width);
-    let aAboveB = (entity.y) < (this.y + this.img.height);
+    let aAboveB = (entity.y) < (this.y );
     // 同时满足
     return !(aLeftOfB || aRightOfB || aAboveB || aBelowB);
   }
@@ -95,6 +98,8 @@ class Asteroid{
           this.collisionDetected();
           particles.spawn(16, this)
           p.active = false;
+          console.log("zidan:",p.x,p.y)
+          console.log("guai:",this.x,this.y)
           return;
         }
       })

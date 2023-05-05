@@ -62,6 +62,21 @@ class Projectile{
       this.y -= Math.cos(this.angle) * this.speed;
       this.alive--;
       this.active = this.alive > 0 ? true :false;
+      
+      // 出界效果
+       if(this.x > this.fx.cnv.width){
+         this.x = 0 - this.size;
+       }
+       if(this.x + this.size < 0){
+         this.x = this.fx.cnv.width;
+       }
+       if(this.y > this.fx.cnv.height){
+        this.y = 0;
+      }
+       if(this.y + this.size < 0){
+        this.y = this.fx.cnv.height;
+      }
+      
     }
   }
   render(){

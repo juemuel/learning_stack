@@ -7,10 +7,10 @@ class Fx{
   init(){
     this.cnv = document.getElementById("canvas");
     this.ctx = this.cnv.getContext("2d");
-    var window_height = window.innerHeight;
-    var window_width = window.innerWidth;
-    this.cnv.width = window_width;
-    this.cnv.height = window_height;
+    // var window_height = window.innerHeight;
+    // var window_width = window.innerWidth;
+    // this.cnv.width = window_width;
+    // this.cnv.height = window_height;
   }
   
   fillCanvas(color){
