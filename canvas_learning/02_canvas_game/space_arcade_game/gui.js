@@ -11,7 +11,8 @@ class Gui{
   resize(){
     if(this.cnv){
       this.cnv.width = window.innerWidth;
-      this.cnv.height = window.innerHeight;
+      this.cnv.height = window.innerHeight
+      console.log("resize:",this.cnv)
     }
   }
   // 1. 调整为canvas为屏幕大小
@@ -42,7 +43,6 @@ class Gui{
     this.toggleScreen(id,true);
   }
   launchIfReady(){
-    console.log(this.resourcesToLoad)
     this.resourcesToLoad--;
     console.log("进度：",this.resourcesToLoad,"/",this.resources.length)
     if(this.resourcesToLoad == 0 ){
@@ -76,13 +76,11 @@ class Gui{
           console.log("加载中",this.resources[i].var.nodeName);
           // 元素的nodeName内容是大写的
           if(this.resources[i].var.nodeName == 'IMG'){
-            console.log("加载图片");
             this.beginLoadingImage(
             this.resources[i].var,
             this.resources[i].file);
           }
           if(this.resources[i].var.nodeName == 'AUDIO'){
-            console.log("加载音频");
             this.beginLoadingAudio(
               this.resources[i].var,
               this.resources[i].file);

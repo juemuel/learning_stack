@@ -7,7 +7,10 @@ class Fx{
   init(){
     this.cnv = document.getElementById("canvas");
     this.ctx = this.cnv.getContext("2d");
-    console.log("canvas:",this.cnv)
+    var window_height = window.innerHeight;
+    var window_width = window.innerWidth;
+    this.cnv.width = window_width;
+    this.cnv.height = window_height;
   }
   
   fillCanvas(color){
@@ -21,7 +24,7 @@ class Fx{
   }
   drawCircle(x,y,size,color){
     this.ctx.beginPath();
-    this.ctx.fillStyle = color();
+    this.ctx.fillStyle = color;
     this.ctx.arc(x,y,size,0,Math.PI*2);
     this.ctx.fill();
   }
@@ -35,5 +38,4 @@ class Fx{
       this.ctx.restore();
     }
   }
-
 }

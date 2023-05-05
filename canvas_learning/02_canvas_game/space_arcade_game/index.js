@@ -5,7 +5,7 @@ window.onload = function(){
   console.log('loading...');
   window.gui.load([
     {id:"player-img", var:playerImg = document.createElement("img"), file:"assets/player01.png"},
-    {id:"asteroid-img", var:asteroidImg = document.createElement("img"), file:"assets/space01.png"},
+    {id:"asteroid-img", var:asteroidImg = document.createElement("img"), file:"assets/enemy1.png"},
     {id:"laser-audio", var:laserAudio = document.createElement("audio"), file:"assets/shoot.wav"},
     {id:"boom-audio", var:boomAudio = document.createElement("audio"), file:"assets/enemy-death.wav"},
   ])
