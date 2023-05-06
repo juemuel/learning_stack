@@ -33,7 +33,7 @@ class Gui{
   closeAllScreens(){
     let elements = document.querySelectorAll(".screen");
     [...elements].forEach(e=>{
-      e.style.display="none";
+      e.style.display= "none";
     })
   }
   // 3.根据id显示screen
@@ -98,11 +98,13 @@ class Gui{
     return this.resources;
   }
   startGame(){
+    this.closeAllScreens();
     this.prepareCanvas();
     this.showScreen("canvas");
     this.gameloop.start();
   }
   stopGame(){
+    this.closeAllScreens();
     this.showScreen("end");
     this.gameloop.stop();
   }

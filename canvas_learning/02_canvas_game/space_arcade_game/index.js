@@ -1,6 +1,5 @@
 let game = new Game();
 window.gui = new Gui(game);
-
 window.onload = function(){
   console.log('loading...');
   window.gui.load([

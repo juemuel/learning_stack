@@ -24,7 +24,6 @@ class KeyHandler {
   }
   
 
-
   keyReleased(e) {  
     if( (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === ' ')
      && this.keys.indexOf(e.key) !== -1){

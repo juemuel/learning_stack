@@ -6,6 +6,14 @@ body{
   font-family: Arial;
 }
 
+i{
+  cursor: pointer;
+  position: absolute;
+  font-size: 3rem; 
+  top:25%;
+  left:50%;
+  transform:translate(-50%, -50%)
+}
 button{
   /* 边框：无边框样式、允许border合并（不屑则默认为浏览器默认样式） */
   outline:none;
@@ -45,7 +53,9 @@ button:hover{
 .screen img{
   max-width: 100%; 
   max-height: 100%;
-  transform: scale(2.5);
+  /* 覆盖全部窗口，无滚轮 */
+  transform: scale(1.5);
+  background-size: cover;
 }
 #load {font-size: 3em;}
 

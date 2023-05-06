@@ -1,0 +1,17 @@
+
+// 背景色调整
+const toggle = document.getElementById("toggleDark");
+const body = document.querySelector('body');
+toggle.addEventListener('click',function(){
+  console.log("click")
+  this.classList.toggle('bi-moon');
+  if(this.classList.toggle('bi-bightnewss-high-fill')){
+    body.style.background = 'white';
+    body.style.color = 'black';
+    body.style.transition = '2s';
+  }else{
+    body.style.background = 'black';
+    body.style.color = 'white';
+    body.style.transition = '2s';
+  }
+})
