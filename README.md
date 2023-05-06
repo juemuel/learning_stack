@@ -24,8 +24,10 @@
       - P10.⭐️拖拽canvas图形
       - P11.⭐️绘制头像
       - TODO：当选择P3后，无法切回P1 P2 的 js样式
-    - canvas_game:arcade
-      - 加载页
+    - canvas_game: space arcade太空街机
+      - 功能：
+      - 页面结构：加载页、开始页、游戏页、结束页
+      - 
 - uni_cloud_learning
     - uni-app、uni-cloud
     - 留言墙demo：使用uni_cloud完成支持图片、文本上传的留言墙
