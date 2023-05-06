@@ -7,8 +7,8 @@
 class Game{
   constructor(){
     this.fx = new Fx();
-    this.player = new Player();
     this.particleService = new ParticleService();
+    this.player = new Player(this.particleService);
     this.asteroidService = new AsteroidService(this.player, this.particleService);
   }
   
@@ -30,7 +30,7 @@ class Game{
   }
   
   render(){
-    this.fx.fillCanvas("#033");
+    this.fx.fillCanvas("#ffe558");
     this.player.render();
     this.asteroidService.render();
     this.particleService.render();

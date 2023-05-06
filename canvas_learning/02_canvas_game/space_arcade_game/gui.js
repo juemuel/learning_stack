@@ -79,11 +79,13 @@ class Gui{
             this.beginLoadingImage(
             this.resources[i].var,
             this.resources[i].file);
+            // console.log("完成：",this.resources[i].var)
           }
           if(this.resources[i].var.nodeName == 'AUDIO'){
             this.beginLoadingAudio(
               this.resources[i].var,
               this.resources[i].file);
+              // console.log("完成：",this.resources[i].var)
           }
         }
       }
@@ -99,5 +101,9 @@ class Gui{
     this.prepareCanvas();
     this.showScreen("canvas");
     this.gameloop.start();
+  }
+  stopGame(){
+    this.showScreen("end");
+    this.gameloop.stop();
   }
 }
