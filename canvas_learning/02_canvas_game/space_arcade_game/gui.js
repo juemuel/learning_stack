@@ -3,7 +3,8 @@
  * index：窗口调整、资源加载
  * ---GUI:资源加载和页面显示
  * ----game：游戏主体
- * -----gameloop：游戏刷新与进程控制
+ * ----asteroidService：敌机服务
+ * ------gameloop：游戏刷新与进程控制
  * ------player(fx)：玩家
  * -------keyhandler：键盘事件
  */
