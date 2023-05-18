@@ -19,6 +19,8 @@
     - 谷歌插件啦，官方demo案例
 - ★★☆ react_learning
     - movie_lib_react_demo:一个基于开源电影API的react-web电影库
+- ★☆☆ react_native_learning
+  - 侧边栏
 - ★★☆ git_learning
     - git
 - ★☆☆ spider_learning
