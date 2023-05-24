@@ -11,7 +11,7 @@
 | node_learning         | 服务端           | 1. file upload_server<br />2. p2p server（websocket+webRTC）<br />3. TODO：不同数据库的CRUD Server | Express、Cors、socket.io                                     | ★☆☆<br />                                         |
 | python_learning       | 语言             | 1. 基础语法<br />2. http_server：用python实现的http server<br />3. socket_server：用python实现的socket server | 简易server搭建                                               | ★☆☆                                               |
 | react_learning        | 前端框架         | 1. movie_lib_react_demo：一个基于开源电影API的react-web电影库 | SPA、react-router、Redux、React Hooks                        | ★★☆                                               |
-| vue_learning          | 前端框架         | 1. kob：一个基于vue+springboot的多人联机项目                 | SPA、vue-router、Vuex                                        | ★★☆                                               |
+| vue_learning          | 前端框架         | 略                                                           | SPA、vue-router、Vuex                                        | ★★☆                                               |
 | react_native_learning | 移动端           | 略                                                           |                                                              | ★☆☆                                               |
 | uni_cloud_learning    | 移动端（小程序） | 1. 留言墙demo：图片、文本上传与删除                          | 云函数使用、云数据库                                         | ★☆☆                                               |
 | Element Plus          | 组件库           | TODO：不同环境下，如e-vue2、e-vue3                           |                                                              | ☆☆☆                                               |
@@ -21,8 +21,11 @@
 | dataV                 | 图形库           | 略                                                           |                                                              | ☆☆☆                                               |
 | chrome_extention      | 特殊             | TODO：颜色拾取器                                             |                                                              | ☆☆☆                                               |
 | spider_learning       | 特殊             | 1. 基础语法<br />2. 常用库：request                          |                                                              | ☆☆☆                                               |
-| git_learning          | 工具             | 略                                                           |                                                              | ★★☆                                               |
+| git_learning          | 工具             | 略                                                           |                                                              | ★★☆<br />[Details](git_learning/readme.md)        |
 | docker_learning       | 工具             | 略                                                           |                                                              | ☆☆☆                                               |
 | nginx_learning        | 工具             | 略                                                           |                                                              | ☆☆☆                                               |
+| kob                   | 学习项目link     | kob：一个基于vue+springboot的多人联机项目                    |                                                              | ★★☆                                               |
+| chat_p2p_learning     | 学习项目link     | 1. webrtc_chatapp_react：一个基于react+node+webrtc的双人视频对话项目<br />2.websocket_chatapp |                                                              | ★★☆                                               |
+|                       |                  |                                                              |                                                              |                                                   |
 |                       |                  |                                                              |                                                              |                                                   |
 
