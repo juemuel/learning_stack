@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./02style.css">
+    <!-- 如果script放在这里，建议用defer避免阻塞 -->
+    <script defer>
+      // http URL资源的下载
+      let downloadPreviewBtn = null;
+      const updatePvBtn = function(){
+        downloadPreviewBtn = document.querySelector(".bi-box-arrow-down");
+      }
+      let downloadImgByHttp = function(imgURL){
+        console.log(imgURL)
+        fetch(imgURL)
+        .then(res => res.blob())
+        .then(file=>{
+          console.log(file);
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(file);
+          a.download = new Date().getTime();
+          a.click();
+        })
+      }
+      let downloadImgByLocal = function(imgURL){
+        // 本地src的下载，如src="images/amier01.jpg"
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET",imgURL,true);
+        xhr.responseType = "blob";
+        xhr.onload = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const file = xhr.response;
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(file);
+            a.download = new Date().getTime();
+            a.click();
+          }
+        };
+        xhr.send();
+      }
+      const showLightbox = function(name, img){
+        lightBox = document.querySelector(".lightbox");
+        lightBox.querySelector("img").src = img;
+        lightBox.querySelector("span").innerText = name;
+        updatePvBtn();
+        downloadPreviewBtn.setAttribute("data-img",img)
+        lightBox.classList.add("show")
+        document.body.style.overflow = "hidden";
+      }
+      const closeLightbox = function(){
+        lightBox.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="lightbox">
+      <div class="wrapper">
+        <header>
+          <div class="item-name">
+            <i class="bi bi-camera"></i>
+            <span></span>
+          </div>
+          <div class="buttons">
+            <i class="bi bi-box-arrow-down"></i>
+            <i class="bi bi-x-lg"></i>
+          </div>
+        </header>
+        <div class="preview-img">
+          <div class="img">
+            <img src="" alt="preview-img">
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class = "search-gallery">
+      <img class="bg-img" loading="lazy" src="images/back.jpg" alt="background-img">
+      <div class="container">
+        <h1>Image Gallery with JS</h1>
+        <p>Search and download any images by awesome UI!</p>
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text" placeholder="Search images"/>
+        </div>
+       <div class="gallery">
+          <ul class="images">
+            <!-- 使用data-XX存储信息 -->
+              <li class="image-item" data-name="amier-01" onclick="showLightbox('DAWN','images/amier01.jpg')">
+                <!-- 方案1:设置loading lazy，加载数不是一屏，而是根据网速、屏幕高度多非线性加载图片数 -->
+                <!-- <img loading="lazy" src="images/loading02.gif" alt=""> -->
+                <!-- 方案2:设置data-src、配合js -->
+                <img src="images/loading02.gif" data-src="images/amier01.jpg" alt="amier">
+                <div class="image-details">
+                  <div class="item-name">
+                    <i class="bi bi-camera"></i>
+                    <span>DAWN</span>
+                  </div>
+                  <button onclick="downloadImgByLocal('${img.src}')">
+                    <i class="bi bi-box-arrow-down"></i>
+                  </button>
+                </div>
+              </li>
+              <li class="image-item" data-name="amier-02" onclick="showLightbox('day dream','images/amier02.jpg')">
+                <!-- <img loading="lazy" src="images/loading02.gif" alt=""> -->
+                <img src="images/loading02.gif" data-src="images/amier02.jpg" alt="">
+                <div class="image-details">
+                  <div class="item-name">
+                    <i class="bi bi-camera"></i>
+                    <span>day dream</span>
+                  </div>
+                  <button onclick="downloadImgByLocal('${img.src}')">
+                    <i class="bi bi-box-arrow-down"></i>
+                  </button>
+                </div>
+              </li>
+          </ul>
+          <button class="load-more">Load More</button>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="02script.js" defer ></script>
+  </body>
+</html>

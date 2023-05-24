@@ -1,0 +1,351 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+/* body全局flex自动换行布局 */
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    min-height: 100vh;
+    background: #6990f2;
+}
+/* 一. 结构布局 */
+/* 通用白框 */
+.wrapper{
+    width: 430px;
+    max-width: 500px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    /* 上右下左 */
+    margin: 50px 0px 50px 0px;
+    /* box-shadow立体效果 */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+/* 通用标题 */
+.wrapper header{
+    color: #6990f2; 
+    margin-bottom: 15px;
+    font-size: 27px;
+    font-weight: 600; 
+    text-align: center;
+}
+/* jue-common-style区，不涉及布局方式（含长宽和margin） */
+/* input内18px、22px（特殊）、提示信息14px */
+/* 100%内容宽长按钮，jue-long-btn，默认不禁用 */
+.jue-long-btn{
+    margin-top: 15px;
+    
+    width: 100%;
+    height: 45px;
+    background: #4285f4;
+    color: #fff;
+    font-size: 18px;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+    transition:opacity 0.15s ease;
+
+    /* user-select: none;
+    pointer-events: none;
+    opacity: 0.7; */
+}
+/* 固定长宽小方形按钮，jue-rect-btn：适合里面放icon，如刷新按钮 */
+.jue-rect-btn{
+    height: 30px;
+    width: 30px;
+    background: #426afb;
+    color: #fff;
+
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* 100%内容宽长Input，jue-long-input：需要减父容器padding */
+.jue-long-input{
+    /* 父容器一般设置padding，使用标准盒模型content-border，故减去 */
+    width: calc(100% - 2*20px);
+    height: 50px;
+    padding: 0 17px;
+
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #b3b2b2;
+
+    font-size: 18px;
+    transition: 0.2s ease;
+}
+
+
+/* 二. 表单效果 */
+/* 通用form i */
+form i{
+    font-size: 50px;
+    color:#b3b2b2;
+}
+/* 通用wrapper p */
+.wrapper p{
+    color:#b3b2b2;
+    position: relative;
+    font-size: 18px;
+}
+/* 通用form p */
+form p{
+    font-size: 18px;
+    color:#b3b2b2;
+}
+
+/* 2.1 uploader表单 */
+#file-upload .upload-form{
+    height: 167px;
+    display: flex;
+    margin: 30px 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+     /* 子元素排列方式  */
+    flex-direction: column; 
+    margin: 30px 0;
+    border-radius: 5px;
+    border: 2px dashed #6990f2;
+}
+/* 当包含active class 触发效果 */
+#file-upload .upload-form.active{
+    background-color: #e9f0ff;
+}
+
+/* 2.2 downloader表单（h+p+f结构） */
+#file-download .download-form{
+    margin-top: 20px;
+}
+/* input：采用jue-long-input；设置input聚焦阴影效果 */
+#file-download .download-input:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+}
+/* button：采用jue-long-btn；设置btn禁用状态 */
+#file-download .download-form .download-btn.disabled{
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.7;
+}
+/* input有效时（require），button才可用 */
+.download-input:valid ~ button{
+    opacity: 1;
+    pointer-events: auto;
+}
+/* 2.3  captcha-genertator表单*/
+/* 限制三行表单项等高 */
+.wrapper .input-field{
+    position: relative;
+    height: 45px;
+    margin-top: 15px;
+    width: 100%;
+}
+/* 验证码显示区域：设置禁用点击输入 */
+#captcha-generator .captcha-box input{
+    color:#6b6b6b;
+    font-size: 22px;
+    pointer-events: none;
+}
+/* btn：input内采用jue-rect-btn；调整布局、设置激活状态*/
+#captcha-generator .input-field .refresh-captcha-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+#captcha-generator .input-field .refresh-captcha-btn:active{
+    transition: translateY(-50%) scale(0.98);
+}
+/* btn：采用jue-long-btn；调整布局、设置激活与未激活状态 */
+#captcha-generator .submit-div .jue-long-btn{
+    /* 已用.input-field限定高度，不需要mt了 */
+    margin-top: 0px; 
+}
+#captcha-generator .submit-div .jue-long-btn.disabled{
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.7;
+}
+/* input：采用jue-long-input；设置聚焦阴影效果 */
+#captcha-generator input:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+}
+/* captcha-genertator input的message提示信息 */
+#captcha-generator .message{
+    font-size: 14px;
+    margin: 14px 0;
+    color: #ff5050;
+    display: none;
+}
+#captcha-generator .message.active{
+    display: block;
+}
+/* 2.5 QRCode 生成器Form */
+.qrc-generator-form{
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.1s ease;
+}
+/* input：采用jue-long-input；设置聚焦状态 */
+.qrc-generator-form input:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+}
+.qrc-generator-preview{
+    opacity: 0;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    pointer-events: none;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+.qrc-generator-preview img{
+    width: 170px;
+}
+#qrc-generator.active .qrc-generator-preview {
+    padding: 30px 0;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
+}
+  
+/* 2.6 QRCode Scanner扫描器 */
+/* 3. 内容与细节 */
+/* 3.1 uploader 细节，进度区、已上传区 */
+section .row{
+    background: #e9f0ff;
+    margin-bottom: 10px;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+section .row i{
+    font-size:30px;
+    color: #6990f2;
+}
+section .details span{
+    font-size: 14px;
+}
+#file-upload .progress-area .row .content{
+    width: 100%;
+    margin-left: 15px;
+}
+#file-upload .progress-area .details{
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+    justify-content: space-between;
+}
+#file-upload .progress-area .progress-bar{
+    height: 6px;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4px;
+    border-radius: 30px;
+}
+#file-upload .progress-bar .progress{
+    height: 100%;
+    width: 0%;
+    background: #6990f2;
+    border-radius: inherit;
+}
+/* 开启溢出高度滑动：scroll */
+#file-upload .uploaded-area{
+    max-height: 230px;
+    overflow-y: scroll;
+}
+/* 隐藏滑动块 */
+.uploaded-area::-webkit-scrollbar{
+    width: 0px;
+}
+#file-upload .uploaded-area .row .content{
+    display: flex;
+}
+/* 当包含onprogress class 触发效果：控制进度条区域 */
+.uploaded-area.onprogress{
+    max-height: 150px;
+}
+.uploaded-area .row .details{
+    display: flex;
+    margin-left: 15px;
+    flex-direction: column;
+}
+.uploaded-area .details .size{
+    font-size:11px;
+    color:#404040;
+}
+/* 设置上传区完成时的icon */
+.uploaded-area .fa-check{
+    color:#6990f2;
+    font-size: 16px;
+    flex-direction: column;
+}
+
+/* 3.3 color random generator */
+#random-color .color-list{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#random-color .color-list .color{
+    margin: 12px;
+    padding: 7px;
+    
+    list-style: none;
+    cursor: pointer;
+    text-align: center;
+
+    background: #e3f2fd;
+    border-radius: 6px;
+
+    box-shadow: 0 10px 25px rgba(52,87,220,0.30);
+    transform: all 0.3s ease;
+}
+#random-color .color-list .color:active{
+    transform: scale(0.95);
+}
+.color .rect-box{
+    width: 185px;
+    height: 188px;
+    border-radius: 4px;
+    background: red;
+}
+.color:hover .rect-box{
+    /* 调整元素亮度 */
+    filter:brightness(107%); 
+}
+.color .hex-value{
+    display: block;
+    color: #444;
+    user-select: none;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin: 12px 0 8px;
+    text-transform: uppercase;
+}
+.refresh-color-btn{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 430px) {
+    .wrapper{
+        width: 60%;
+    }
+}

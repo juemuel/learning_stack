@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/f5c9bd53df.js"></script>
+    <link href="index.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="file-upload" class="wrapper">
+        <header>File Uploader</header>
+        <form class="upload-form" action="#">
+            <!-- input能设置hideen！！！ -->
+            <input class="upload-input" type="file" name="file" hidden >
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>点击选择 或 拖拽文件 上传</p>
+        </form>
+        <section class="progress-area">
+        </section>
+        <section class="uploaded-area">
+        </section>
+    </div>
+    <div id="file-download" class="wrapper">
+      <header>File Downloader</header>
+      <p>粘贴图片、视频或pdf等文件的url即可下载</p>
+      <form class="download-form" action="#">
+          <!-- input能设置hideen！！！ -->
+          <input class="download-input jue-long-input" type="url" placeholder="粘贴URL地址" required>
+          <button class="download-btn jue-long-btn disabled">开始下载</button>
+      </form>
+    </div>
+    <div id="captcha-generator" class="wrapper">
+        <header>Captach Generator</header>
+        <div class="input-field captcha-box">
+            <input type="text" class="jue-long-input" value="" disabled>
+            <button class="refresh-captcha-btn jue-rect-btn">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+        </div>
+        <div class="input-field captcha-input">
+            <input class="jue-long-input" type="text" placeholder="输入验证码">
+        </div>
+        <div class="message">输入验证码错误</div>
+        <div class="input-field submit-div">
+            <button class="jue-long-btn disabled">发送</button>
+        </div>
+    </div>
+    <div id="random-color" class="wrapper">
+      <header>Random Color Generator</header>
+      <p>随机生成颜色</p>
+      <ul class="color-list">
+        <li class="color">
+            <div class="rect-box"></div>
+            <span class="hex-value">#8A6CFF</span>
+        </li>
+      </ul>
+      <button class="refresh-color-btn jue-rect-btn">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
+    <div id="qrc-generator" class="wrapper">
+        <header>QRCode Generator</header>
+        <p>粘贴文本或url来创建QRCode</p>
+        <form class="qrc-generator-form" action="#">
+            <!-- input能设置hideen！！！ -->
+            <input class="qrc-generator-input jue-long-input" type="text" spellcheck="false" placeholder="粘贴文本或地址">
+            <button class="qrc-generator-btn jue-long-btn disabled">生成</button>
+        </form>
+        <div class="qrc-generator-preview">
+            <img src="" alt="qr-code">
+        </div>
+    </div>
+    <div id="qrc-scanner" class="wrapper">
+        <header>QRCode Scanner</header>
+        <form action="#">
+            <input type="file" hidden></input>
+            <img src="#" alt="qr-code">
+            <div class="content">
+                <i class="fas fa-cloud-upload"></i>
+                <p>上传二维码，进行扫描</p>
+            </div>
+        </form>
+        <div class="details">
+            <textarea spellcheck="false" disabled></textarea>
+            <div class="buttons">
+                <button class="close">关闭</button>
+                <button class="copy">复制内容</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

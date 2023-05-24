@@ -1,0 +1,270 @@
+/* 文本样式会被继承、布局样式不会继承 */
+*{
+  margin: 0 auto;
+  padding:0;
+  /* 设置为content-box模型，标准盒模型content-box,传统border-box */
+  box-sizing: content-box;
+  font-family: 'Poppins',sans-serif;
+}
+.search-gallery{
+  /* 大小位置 */
+  height: 40vh;
+  width: 100%;
+  position: relative;
+}
+/* 一、标头部分 */
+.search-gallery .bg-img {
+  /* 大小位置 */
+  position: absolute;
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+}
+/* 二、主体内容 */
+.search-gallery .container{
+  position: relative;
+  color: #fff;
+  min-height: 100vh;
+  max-width: 1000px;
+  /* 结构布局：由于使用标准盒模型，padding 的值会增加元素的实际宽度，导致元素超出父容器的边界。 */
+  /* 故采用cal调整或将内容嵌套在子元素中 */
+  width: calc(100% - 2 * 40px);
+  padding: 40px 20px;
+}
+/* 标头：放置于container（字体相关继承） */
+.search-gallery h1{
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.search-gallery p{
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* 2.1 输入框 */
+.container .search-box{
+  /* 大小位置 */
+  position: relative;
+  height: 55px;
+  width: 60%;
+  max-width: 400px;
+  margin: 2rem auto;
+  margin-right: 100rem;
+}
+.search-box .bi-search{
+  /* 大小位置 */
+  position: absolute;
+  transform: translateY(-50%);
+  top:50%;
+  left: 20px;
+  /* icon样式 */
+  color: #999;
+  font-size: 1.5rem;
+  z-index: 2;
+}
+input,button,i{
+  /* 通用UI优化 */
+  outline: none;
+  border: none;
+  border-radius: 6px;
+}
+.search-box input{
+  /* 大小位置 */
+  height: 100%;
+  width: 100%;
+  padding: 0 15px 0 45px;
+  /* input颜色与字体 */
+  background-color: black;
+  color: #fff;
+}
+
+/* 2.2 图片区 */
+.gallery{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* images容器 */
+.gallery .images{
+  margin-top: 40px;
+  max-width: 95%;
+  /* m1:等分换行 */
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+  /* m2:自动列宽换行 */
+  gap:15px;
+  columns: auto 260px;
+}
+/* image子项*/
+.images .image-item{
+  position: relative;
+  overflow: hidden;
+  /* m1:等分换行 子项需设宽 */
+  /*  height: 300px;
+  width: 210px;
+  max-width: 200px; 
+  max-width: 95%;*/
+ /* m2:自动列宽换 子项不用设宽 */  
+  list-style: none;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  /* 动画1p1:线性放大，设置放大过程 */
+  transition: transform 0.5s linear;
+}
+.images .image-item img{
+  height: 100%;
+  /* min-height: 100px; */
+  width: 100%;
+  border-radius: 6px;
+}
+/* 伪类使用，①XX:hover对XX；②XX:hover a对a */
+/* 在执行对象中加线性变换做出动画效果比较好*/
+.image-item:hover{
+  /* 动画1p2:线性放大，设置放大比例 */
+  transform: scale(1.05);
+}
+.gallery i{
+  margin-right: 1;
+  font-size: 1.4rem;
+}
+
+
+/* 2.3 item细节区区 */
+.image-item .image-details{
+  position: absolute;
+  /* 先放在底部，用于动画底部出现，变成0 */
+  bottom: -100px;
+  
+  /* 结构布局：由于使用标准盒模型，padding 的值会增加元素的实际宽度，导致元素超出父容器的边界。 */
+  /* 故采用cal调整或将内容嵌套在子元素中 */
+  width: calc(100% - 2 * 20px);
+  /* margin-bottom: 14px; */
+  padding:15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* 背景色：渐变灰色 */
+  background: linear-gradient(to top, rgba(0,0,0,0.7),transparent);
+  /* 动画2p1:ease底部出现效果，对bottom做变化 */
+  transition: bottom 0.1s ease;
+}
+.image-item:hover{
+  /* 动画1p2:线性放大，设置放大比例 */
+  transform: scale(1.05);
+}
+.image-item:hover .image-details{
+  bottom: 0;
+}
+/* item-name区 */
+/* 不用h6转inline-block，直接span */
+/* 由于h6是块级元素，无法与对应的image保证在（行）同一个区域 */
+.item-name span{
+  font-size: 14px;
+  font-weight: 500px;
+  text-transform: capitalize;
+}
+.bi-box-arrow-down{
+  color:#fff;
+  background-color: #333;
+  /* 用错了一个icon，只能先调整了一下样式凑合啦 */
+  /* background-color: transparent; */
+  /* background-color: rgba(255, 255, 255, 0); */
+}
+
+/* 加载更多按钮 */
+.gallery .load-more{
+  margin:50px 0;
+  font-size: 1.2rem;
+  /* 标准盒下，button中加padding可以撑开 */
+  color:white;
+  padding:12px 27px;
+  background: #8a6cff;
+  cursor: pointer;
+}
+.gallery .load-more.disabled{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 图片预览区 */
+.lightbox{
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.65);
+  display: none;
+}
+/* 注意.lightbox.show{} 和.lightbox .show{}的区别 */
+.lightbox.show{
+  display: block;
+}
+.lightbox .wrapper{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 20px;
+  /* 结构布局：由于使用标准盒模型，padding 的值会增加元素的实际宽度，导致元素超出父容器的边界。 */
+  /* 故采用cal调整或将内容嵌套在子元素中 */
+  width: calc(100% - 2 * 20px);
+  max-width: 850px;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 5px;
+}
+.wrapper header{
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+header .item-name{
+  margin: 0 0;
+  color: #333;
+}
+header .item-name i{
+  font-size:1.7rem;
+}
+header .item-name span{
+  color: black;
+  font-size:1.2rem;
+  font-weight: 200;
+}
+
+header .buttons{
+  margin: 0 0;
+}
+.buttons i{
+  font-size: 1.2rem;
+  line-height: 40px;
+
+  width: 40px;
+  height: 40px;
+  display:inline-block;
+  text-align: center;
+  
+  background-color: #8a6cff;
+  color: white;
+  cursor: pointer;
+}
+
+.buttons i:last-child{
+  margin-left: 10px;
+  background-color: indianred;
+}
+.preview-img{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+.wrapper .preview-img .img{
+  max-height: 65vh;
+  max-width: 90vh;
+}
+
+.preview-img .img img{
+  width: 100%;
+  height: 100%;
+  /* 按宽高比适应容器 */ 
+  object-fit: contain;
+}

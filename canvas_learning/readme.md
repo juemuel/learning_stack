@@ -15,8 +15,6 @@
 - TODO：当选择P3后，无法切回P1 P2 的 js样式
 
 
-
-
 ## Canvas Game
 ### Space Arcade Game
 - EXP：资源加载和GUI切换（index、gui）、canvas工具类（fx）、按键事件处理（keyhandler）、日间夜间样式切换
