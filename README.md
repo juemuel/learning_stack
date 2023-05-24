@@ -6,7 +6,7 @@
 
 | 名称                  | 类型             | 内容                                                         | 技术点与经验                                                 | Status                                            |
 | --------------------- | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------- |
-| web_common_learning   | web基础          | 1.imageDemo：响应式的图片画廊<br />2.toolKitsDemo：web工具集合<br /><br />3.VideoDemo：响应式的视频画廊<br />4.PopDemo：一些弹窗案例（网络、cookies） | 常用组件样式<br />响应式布局（flex、媒体查询）、事件监听、懒加载 | ★★☆<br />[Details](web_common_learning/README.md) |
+| web_common_learning   | web基础          | 1.imageDemo：响应式的图片画廊<br />2.toolKitsDemo：web工具集合<br /><br />3.VideoDemo：响应式的视频画廊<br />4.PopDemo：一些弹窗案例（网络、cookies） | 常用组件样式<br />响应式布局（flex、媒体查询）、事件监听、懒加载、日间夜间模式 | ★★☆<br />[Details](web_common_learning/README.md) |
 | canvas_learning       | 图形             | 1. canvas_demo：包含canvas的基本使用案例，以及一个绘画板App<br />2. canvas_game：space arcade 太空街机游戏 | canvas工具类、碰撞检测、拖拽；<br />片头动画、资源加载机制、粒子特效、JS的面向对象开发 | ★★☆<br />[Details](canvas_learning/readme.md)     |
 | node_learning         | 服务端           | 1. file upload_server<br />2. p2p server（websocket+webRTC）<br />3. TODO：不同数据库的CRUD Server | Express、Cors、socket.io                                     | ★☆☆<br />                                         |
 | python_learning       | 语言             | 1. 基础语法<br />2. http_server：用python实现的http server<br />3. socket_server：用python实现的socket server | 简易server搭建                                               | ★☆☆                                               |
