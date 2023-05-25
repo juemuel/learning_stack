@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Typography, AppBar,makeStyles } from '@material-ui/core';
 
 import VideoPlayer from './Components/VideoPlayer';

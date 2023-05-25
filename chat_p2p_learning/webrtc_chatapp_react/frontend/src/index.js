@@ -10,7 +10,9 @@ import  './styles.css';
 // ReactDOM.render(<App />,document.getElementById('root'))
 const root = createRoot(document.getElementById('root')); 
 root.render(
-    <ContextProvider>
-        <App />
-    </ContextProvider> 
-    );
+    <React.StrictMode> 
+        <ContextProvider>
+            <App />
+        </ContextProvider> 
+    </React.StrictMode>
+);
