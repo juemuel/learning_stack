@@ -2,7 +2,8 @@ import React, {createContext, useState, useRef, useEffect,useCallback} from 'rea
 import {io} from 'socket.io-client';
 import Peer from 'simple-peer';
 const SocketContext = createContext();
-const socket = io('http://localhost:5001');
+// const socket = io('http://localhost:5001');
+const socket = io('https://socket-server-node-ashy.vercel.app');
 
 
 // ContextProvider提供SocketContext
