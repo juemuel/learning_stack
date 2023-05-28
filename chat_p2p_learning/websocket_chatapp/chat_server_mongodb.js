@@ -8,7 +8,6 @@ const server = http.createServer(app);
 // 传入必须{}对象形式
 const wss = new WebSocket.Server({server});
 
-
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(message) {
         console.log('received: %s', message);
