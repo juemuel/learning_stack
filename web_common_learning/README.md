@@ -4,7 +4,7 @@
 
 - ★★☆ imageDemo：
   - [完成]图片画廊（支持懒加载、搜索、modal、下载、预览） [Preview](#一、图片画廊)
-  - [   ]图片编辑器
+  - [TD]图片编辑器
 - ★★☆ videoDemo：
   - [完成]视频画廊（支持悬浮预览、modal、CSS动画） [Preview](#二、视频画廊)
 - ★★☆ toolKitsDemo：web工具箱  [Preview](#三、通用工具)
@@ -12,14 +12,14 @@
   - [完成]文件下载（web）
   - [完成]验证码生成验证器（web）
   - [完成]颜色生成器（web）
-  - [   ]颜色拾取器
+  - [TD]颜色拾取器
   - [完成]QRCode生成器（web+api）
-  - [   ]QRCode扫描器
-  - [   ]虚浮工具（聊天助手）
-  - [   ]密码强弱工具
+  - [TD]QRCode扫描器
+  - [TD]虚浮工具（聊天助手）
+  - [TD]密码强弱工具
 - ☆☆☆ popDemo：弹窗案例工具箱
-  - cookeDemo
-  - netWorkDemo
+  - [TD]cookeDemo
+  - [TD]netWorkDemo
 
 
 

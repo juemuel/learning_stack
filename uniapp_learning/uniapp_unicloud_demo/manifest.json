@@ -1,5 +1,5 @@
 {
-    "name" : "uniapp_unicloud_demo",
+    "name" : "JueMemo",
     "appid" : "__UNI__295A0E4",
     "description" : "",
     "versionName" : "1.0.0",
@@ -50,9 +50,12 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxe10e1875f615815c",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
         },
         "usingComponents" : true
     },

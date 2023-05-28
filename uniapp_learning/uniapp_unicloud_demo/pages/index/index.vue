@@ -6,7 +6,6 @@
       <button type="primary" size="mini" @click="publish()" >发布</button>
       <!-- <button type="primary" size="mini" @click="choose" value="上传照片">上传IMG</button> -->
     </view>
-    <!-- 以下是chatgpt主要补全的区域，实现图片也可以上传并展示在list中 -->
     <view class=".list" v-for="item in list" :key="item._id">
       <view class="box">
         <view class="content">{{item.content}}</view>
@@ -29,11 +28,13 @@
       }
     },
     onLoad() { // 加载时显示
+      console.log("ONlOAD啦！")
       // 调用中文美句API，返回Promise对象
       uni.request({
         url: 'https://api.xygeng.cn/one',
+        method:'GET',
         success: (res) => {
-          console.log(res)
+          console.log(res.data)
           this.content = res.data.data.content
         },
         fail: (err) => {
