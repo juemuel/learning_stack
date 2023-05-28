@@ -1,10 +1,14 @@
 **/.DS_Store
+
 **/node_modules/
 **/dist/
+**/build/
+
 **/*.exe
 **/*.o
 **/*.pyc
 **/*.swp
+
 npm-debug.log
 current_deploy.sh
 **/package-lock.json
