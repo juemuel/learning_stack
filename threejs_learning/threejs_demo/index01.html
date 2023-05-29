@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 注意import map时的版本匹配 -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module">
+        // three/addons/路径之后对应的是three.js官方文件包`/examples/jsm/`中的js库
+        // 扩展库OrbitControls.js
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        // 扩展库GLTFLoader.js
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import * as THREE from 'three';
+        console.log(OrbitControls);
+        console.log(GLTFLoader);
+        
+        // 一、场景设计Scene
+        const scene = new THREE.Scene(); // 实例3D场景对象Scene
+        // 二、模型设计Mesh
+        const geometry = new THREE.BoxGeometry(100, 60, 20); // 实例物体形状BoxGeometry
+        const material = new THREE.MeshBasicMaterial({ // 实例材质MeshBasicMaterial
+            color: 0xff0000, //设置材质颜色
+            transparent:true,//开启透明
+            opacity:0.5,//设置透明度
+        });
+        //BoxGeometry+MeshBasicMaterial->Mesh
+        const mesh = new THREE.Mesh(geometry, material); //实例网格模型对象Mesh
+        mesh.position.set(0,10,0);// 设置Mesh位置
+        scene.add(mesh); // 添加Mesh到Scene
+        
+        const width = 800; //宽度
+        const height = 500; //高度
+
+        // 三、建立相机
+        // const camera = new THREE.PerspectiveCamera(); // 实例PerspectiveCamera透视投影相机对象，具有默认参数(50,1,0.1,2000)
+        const camera = new THREE.PerspectiveCamera(30, width / height, 1, 3000);
+        camera.position.set(-200, 30, 280); // 设置相机位置
+        camera.lookAt(mesh.position); //向mesh对应的位置观察（需要你先判断过相机的位置），也可以是坐标
+
+        // 四、WebGLRender渲染+canvas画布尺寸！拍摄～
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(width, height); //设置three.js渲染区域的尺寸(像素px)
+        renderer.render(scene, camera); //执行渲染操作
+        document.body.appendChild(renderer.domElement); // 添加到某个元素中（此处body）
+
+        // 五、坐标系设置
+        // AxesHelper：辅助观察的坐标系
+        const axesHelper = new THREE.AxesHelper(150);
+        scene.add(axesHelper);
+
+
+    </script>
+</body>
+</html>
