@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* 适合全屏布局的css设置 */
+        body {  
+            background: linear-gradient(#e4e0ba, #f7d9aa); 
+            margin: 0px; 
+            overflow: hidden; 
+        } 
+    </style>
 </head>
 <body>
     <!-- 注意import map时的版本匹配 -->
@@ -18,48 +26,94 @@
     </script>
     <script type="module">
         // three/addons/路径之后对应的是three.js官方文件包`/examples/jsm/`中的js库
-        // 扩展库OrbitControls.js
+        // 相机控件扩展库（支持旋转缩放），见下方使用
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         // 扩展库GLTFLoader.js
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         import * as THREE from 'three';
-        console.log(OrbitControls);
-        console.log(GLTFLoader);
+
+        // 一、实例渲染器、场景；设置画布、坐标轴
+        // 1.1 实例渲染器、场景 + 设置画布大小、坐标轴
+        const scene = new THREE.Scene(),
+              renderer = new THREE.WebGLRenderer();
+        // 1.2.1 固定大小渲染
+        // const width = 500, height = 500;
+        // renderer.setSize(width, height); //设置three.js渲染区域的尺寸(像素px)
+        // 1.2.1 全屏渲染
+        const width = window.innerWidth, height = window.innerHeight; //窗口文档显示区的高度作为画布高度
+        renderer.setSize(width, height);
+
+        // 动态监听窗口大小，调整canvas画布，重置渲染器
+        window.onresize = function () {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // 全屏情况下：设置观察范围长宽比aspect为窗口宽高比
+            camera.aspect = window.innerWidth / window.innerHeight;
+            // 渲染器执行render方法的时候会读取相机对象的投影矩阵属性projectionMatrix
+            // 但是不会每渲染一帧，就通过相机的属性计算投影矩阵(节约计算资源)
+            // 如果相机的一些属性发生了变化，需要执行updateProjectionMatrix ()方法更新相机的投影矩阵
+            camera.updateProjectionMatrix();
+        };
+
         
-        // 一、场景设计Scene
-        const scene = new THREE.Scene(); // 实例3D场景对象Scene
-        // 二、模型设计Mesh
-        const geometry = new THREE.BoxGeometry(100, 60, 20); // 实例物体形状BoxGeometry
-        const material = new THREE.MeshBasicMaterial({ // 实例材质MeshBasicMaterial
-            color: 0xff0000, //设置材质颜色
-            transparent:true,//开启透明
-            opacity:0.5,//设置透明度
-        });
-        //BoxGeometry+MeshBasicMaterial->Mesh
-        const mesh = new THREE.Mesh(geometry, material); //实例网格模型对象Mesh
-        mesh.position.set(0,10,0);// 设置Mesh位置
-        scene.add(mesh); // 添加Mesh到Scene
-        
-        const width = 800; //宽度
-        const height = 500; //高度
-
-        // 三、建立相机
-        // const camera = new THREE.PerspectiveCamera(); // 实例PerspectiveCamera透视投影相机对象，具有默认参数(50,1,0.1,2000)
-        const camera = new THREE.PerspectiveCamera(30, width / height, 1, 3000);
-        camera.position.set(-200, 30, 280); // 设置相机位置
-        camera.lookAt(mesh.position); //向mesh对应的位置观察（需要你先判断过相机的位置），也可以是坐标
-
-        // 四、WebGLRender渲染+canvas画布尺寸！拍摄～
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(width, height); //设置three.js渲染区域的尺寸(像素px)
-        renderer.render(scene, camera); //执行渲染操作
-        document.body.appendChild(renderer.domElement); // 添加到某个元素中（此处body）
-
-        // 五、坐标系设置
-        // AxesHelper：辅助观察的坐标系
+        document.body.appendChild(renderer.domElement);
         const axesHelper = new THREE.AxesHelper(150);
         scene.add(axesHelper);
 
+        // 二. 实例模型（形状、材质）
+        const geometry_box = new THREE.BoxGeometry(50, 50, 20); 
+        const material_lambert = new THREE.MeshLambertMaterial({ // MeshBasicMaterial｜漫发射～Lambert～｜高光～Phong～｜物理1:～Standard～｜物理2:～Physical～
+            color: 0x0000ff, // 定义材质颜色 
+            emissive: 0x072534, // 定义自发光颜色
+            side: THREE.DoubleSide, // 设置渲染面，这里设置为双面渲染
+            transparent:true,//开启透明
+            opacity:0.5,//设置透明度半透明，看坐标系原点
+        });
+        const mesh_lambert = new THREE.Mesh(geometry_box, material_lambert); 
+        mesh_lambert.position.set(0,100,0);// 设置Mesh位置
+        scene.add(mesh_lambert); // 添加Mesh到Scene
+
+        // 三、实例相机+补充光源
+        // 3.1 实例光源（选）：点光源PointLight|平行光|环境光AmbientLight|聚光灯
+        // 3.1.1 点光源实例(光源颜色，光源强度)；可开Helper显示光源、光源射向
+        // const pointLight = new THREE.PointLight(0xffffff, 1.0); 
+        // pointLight.position.set(100, 100, 100); //（x轴上Nx,0,,0）
+        // pointLight.target = mesh_lambert; // 默认0,0,0
+        // scene.add(pointLight); 
+        // const pointLightHelper = new THREE.PointLightHelper(pointLight, 10);// 光源
+        // scene.add(pointLightHelper);
+        // 3.1.2 平行光(光源颜色，光源强度)；可开Helper显示光源、设置入射角
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2.0); 
+        directionalLight.position.set(100, 100, 100); // 改变入射角度会对漫反射模型不同影响
+        const dirLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5,0xff0000);
+        scene.add(dirLightHelper);
+        scene.add(directionalLight);
+        // 3.1.3 环境光(光源颜色，光源强度)；
+        // const ambientLight = new THREE.AmbientLight(0xffffff, 10); 
+        // scene.add(ambientLight);
+
+        // 3.2 实例相机(FOV, aspect, near, far)
+        const camera = new THREE.PerspectiveCamera(45, width / height, 1, 3000);// 实例透视投影相机对象，具有默认参数(50,1,0.1,2000)
+        camera.position.set(100, 100, 400); // 设置相机位置
+        // camera.lookAt(0,0,0);
+        camera.lookAt(mesh_lambert.position); //向mesh对应的位置观察（需要你先判断过相机的位置），也可以是坐标
+        const controls = new OrbitControls(camera, renderer.domElement);// 设置相机控件轨道控制器OrbitControls
+        controls.addEventListener('change', function () { 
+            renderer.render(scene, camera); //controls变化则重新渲染（如果用raf则不必这边渲染）
+        });
+      
+
+        // 四、渲染模型+（选）循环渲染
+        renderer.render(scene, camera); //执行渲染操作
+        const clock = new THREE.Clock();
+        function render() {
+            const spt = clock.getDelta()*1000;//毫秒
+            console.log('两帧渲染时间间隔(毫秒)',spt);
+            console.log('帧率FPS',1000/spt);
+            renderer.render(scene, camera); //执行渲染操作
+            mesh_lambert.rotateY(0.01);//每次绕y轴旋转0.01弧度
+            requestAnimationFrame(render);//请求再次执行渲染函数render，渲染下一帧
+        }
+        render();
 
     </script>
 </body>
