@@ -16,6 +16,9 @@ pnpm-debug.log*
 # Editor directories and files
 .idea
 .vscode
+.eslintrc.json
+babel.config.js
+.babelrc
 *.suo
 *.ntvs*
 *.njsproj

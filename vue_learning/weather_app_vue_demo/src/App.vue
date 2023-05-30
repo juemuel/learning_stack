@@ -2,18 +2,34 @@
   <div id="app">
     <main>
       <div class="search-box">
-        <input name="" id="" type="text" class="search-bar">
+        <input
+          id=""
+          name=""
+          type="text"
+          class="search-bar"
+        >
       </div>
       <div class="weather-wrap">
         <div class="location-box">
-          <div class="location">Vadodara, India</div>
-          <div class="date">12 may 2008</div>
+          <div class="location">
+            北京, 中国
+          </div>
+          <div class="date">
+            12日 三月 2023
+          </div>
         </div>
         <div class="weather-box">
-          <div class="temp">20°c</div>
-          <div class="weather-image"></div>
-          <div class="weather">cloudy</div>
-          <div class="weather-description">brocken cloud</div>
+          <div class="temp">
+            20°c
+          </div>
+          <div class="weather-image">
+            <div class="weather">
+              多云
+            </div>
+            <div class="weather-description">
+              ～～～
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -24,23 +40,22 @@ export default {
   name: 'App',
 }
 </script>
-
 <style>
+/* CSS 基本配置 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
 body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* App 背景 */
 #app {
-  /* background-image: url("asstes/cold-bg.png"); */
-  /* background-size: cover;
-  background-position: bottom; */
+  background-image: url("assets/back.jpg");
+  background-size: cover;
+  background-position: bottom;
   transition: 0.4s;
 }
 
@@ -92,22 +107,22 @@ main {
   font-style: italic;
   text-align: center;
 }
+
 .weather-box {
-text-align:center;
+  text-align: center;
 }
 
 .weather-box .temp {
-display: inline-block;
-padding: 10px 25px;
-color: #FFFFFF;
-font-size: 102px; 
-font-weight: 900;
-text-shadow: 3px 6px rgba(0, 0, 0, 0.25); 
-background-color: rgba(255, 255, 255, 0.25); 
-border-radius: 16px; 
-margin: 30px 0px;
+  display: inline-block;
+  padding: 10px 25px;
+  color: #FFFFFF;
+  font-size: 102px;
+  font-weight: 900;
+  text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  margin: 30px 0px;
 
-box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
-
 </style>
