@@ -20,7 +20,7 @@
             {{ location_name }}, 中国
           </div>
           <div class="date">
-            12日 三月 2023
+            {{ curDateBuilder() }}
           </div>
         </div>
         <div class="weather-box">
@@ -84,7 +84,6 @@ export default {
       } finally {
         console.log(this.location_name, this.location_code, this.weather);
       }
-
       // Promise fetch 写法
       // if (e.key === "Enter") {
       //   fetch(`${this.geo_url_base}?location=${this.query}&key=${this.api_key}`)
@@ -116,6 +115,18 @@ export default {
       this.weather.temp = data.now.temp;
       this.weather.text = data.now.text
     },
+    curDateBuilder(){
+      let d = new Date();
+      // let months_en = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      let months_cn = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二"];
+      // let days_en = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+      let days_cn = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"];
+      let date = d.getDate();
+      let day = days_cn[d.getDay()];
+      let month = months_cn[d.getMonth()];
+      let year = d.getFullYear();
+      return `${day} ${date} ${month} ${year}`;
+    }
   }
 
 }
