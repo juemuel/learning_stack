@@ -8,13 +8,13 @@
 import Sidebar from './components/Sidebar.vue';
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 :root{
   --primary: #aade8e;
   --grey: #64748b;
   --dark:#1e293b;
   --dark-alt: #334155;
-  --light:#609fde;
+  --light:#ebeef1;
   --sidebar-width: 380px;
 }
 *{
@@ -25,13 +25,13 @@ import Sidebar from './components/Sidebar.vue';
 body{
   background: var(--light);
 }
-// button{
-//   cursor: pointer;
-//   appearance: none;
-//   border: none;
-//   outline:none;
-//   background:none;
-// }
+button{
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline:none;
+  background:none;
+}
 .app{
   display: flex;
   main{
