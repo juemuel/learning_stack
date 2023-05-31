@@ -1,5 +1,6 @@
 <template>
     <div class="app">
+      <Sidebar />
       <router-view />
     </div>
 </template>
@@ -13,7 +14,7 @@ import Sidebar from './components/Sidebar.vue';
   --grey: #64748b;
   --dark:#1e293b;
   --dark-alt: #334155;
-  --light:#f1f5f9;
+  --light:#609fde;
   --sidebar-width: 380px;
 }
 *{
@@ -24,13 +25,13 @@ import Sidebar from './components/Sidebar.vue';
 body{
   background: var(--light);
 }
-button{
-  cursor: pointer;
-  appearance: none;
-  border: none;
-  outline:none;
-  background:none;
-}
+// button{
+//   cursor: pointer;
+//   appearance: none;
+//   border: none;
+//   outline:none;
+//   background:none;
+// }
 .app{
   display: flex;
   main{
@@ -39,7 +40,6 @@ button{
     @media (max-width:768px) {
       padding: 6rem;
     }
-
   }
 }
 

@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Home from './pages/Home.vue';
+import Home from '../pages/Home.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -12,7 +12,7 @@ const router = createRouter({
         {
             path: '/about',
             name: 'about',
-            component: ()=>import('./pages/About.vue')// 路由懒加载
+            component: ()=>import('../pages/About.vue')// 路由懒加载
         }
     ]
 })
