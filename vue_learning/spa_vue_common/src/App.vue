@@ -15,12 +15,13 @@ import Sidebar from './components/Sidebar.vue';
   --dark:#1e293b;
   --dark-alt: #334155;
   --light:#ebeef1;
-  --sidebar-width: 380px;
+  --sidebar-width: 200px;
 }
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size:15px;
 }
 body{
   background: var(--light);
