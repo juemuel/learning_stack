@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="left">
@@ -15,7 +17,7 @@
             <label><i class="fa-brands fa-css3-alt"></i>CSS</label>
             <textarea id="css-code" onkeyup="run()"></textarea>
             <label><i class="fa-brands fa-js"></i>JavaScript</label>
-            <textarea id="js-code" onkeyup="run()"></textarea>           
+            <textarea id="js-code" onkeyup="run()"></textarea>
         </div>
         <div class="right">
             <iframe id="output"></iframe>
@@ -27,49 +29,37 @@
             let cssCode = document.getElementById("css-code");
             let jsCode = document.getElementById("js-code");
             let output = document.getElementById("output");
-            html.innerHTML="<h1>helloworld</h1>\n<button onclick='change()'>change</button>";
-            cssCode.innerHTML="h1{color:red}";
-            jsCode.innerHTML="function change() {\n\t"+
-                     "var h1 = document.querySelector('h1');\n\t"+
-                     "h1.style.color = 'blue';\n"+
-                   "}";
+            html.innerHTML = "<h1>helloworld</h1>\n<button onclick='change()'>change</button>";
+            cssCode.innerHTML = "h1{color:red}";
+            jsCode.innerHTML = "function change() {\n\t" +
+                "var h1 = document.querySelector('h1');\n\t" +
+                "h1.style.color = 'blue';\n" +
+                "}";
             render();
         }
         init();
+        // throttle返回的函数，需要保存再调用，才算执行return返回的函数
+        const throttledRender = throttle(render, 1000);
+
         function run() {
-            console.log("b");
-            throttle(render,1000);
+            throttledRender();
         }
-        function render(){
-            console.log("A")
+        function render() {
             let htmlCode = document.getElementById("html-code").value;
             let cssCode = document.getElementById("css-code").value;
             let jsCode = document.getElementById("js-code").value;
             let output = document.getElementById("output");
 
-            output.contentDocument.body.innerHTML = htmlCode 
-            + "<style>"+cssCode + "</style>";
+            output.contentDocument.body.innerHTML = htmlCode
+                + "<style>" + cssCode + "</style>";
             output.contentWindow.eval(jsCode)
-        }
-        
-        // 防抖,期间抖动无效
-        function debounce(fufnnc, wait) {
-            let timer = null;
-            return function(...args) {
-                const _this = this;
-                console.log(this);
-                if(timer) clearTimeout(timer);
-                timer = setTimeout(() => {
-                    fn.apply(_this, args);
-                }, wait);
-            };
         }
         // 节流，限制频率，此处建议用 throttle
         function throttle(fn, delay) {
             let timer = null;
             return function (...args) {
                 const _this = this;
-                console.log("THIS",_this);
+                console.log("这行不输出？THIS", _this);
                 if (timer) return;
                 timer = setTimeout(() => {
                     fn.apply(_this, args);
@@ -77,6 +67,22 @@
                 }, delay);
             };
         };
+
+
+        // 防抖,期间抖动无效
+        function debounce(fufnnc, wait) {
+            let timer = null;
+            return function (...args) {
+                const _this = this;
+                console.log(this);
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(_this, args);
+                }, wait);
+            };
+        }
+
     </script>
 </body>
+
 </html>
