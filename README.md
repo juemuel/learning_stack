@@ -21,30 +21,30 @@
 
 
 
-## 前端方向、3D图形库
+## 前端方向
 
-| 名称                            | 类型       | Github 存档                                                  | 技术点与经验                         | Status |
-| ------------------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------ | ------ |
-| threejs_learning<br />（webGL） | 3D 图形    | 1.**threejs_learning**：包含threejs的基本使用案例，以及imgTo3d的案例。 | 1. 原生环境的three.js 基本使用<br /> | ★☆     |
-| chrome_extention                | 插件方向   | 略                                                           | 1. Chrome 简易插件开发               | ★☆     |
-| editor_learning<br />           | 编辑器方向 | 1. **codepen_clone_react**：一个使用react模仿的codepen项目，支持HTML、CSS、JS和Preview<br /> | 1. html、css、js加载与渲染<br />     | ★      |
-|                                 |            |                                                              |                                      |        |
-|                                 |            |                                                              |                                      |        |
-|                                 |            |                                                              |                                      |        |
+| 名称                                        | 类型         | Github 存档                                                  | 技术点与经验                                                 | Status |
+| ------------------------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
+| threejs_learning<br />（webGL）             | 3D 图形      | 1.**threejs_demo**：包含threejs的基本使用案例<br />2.**picTo3d**：将一张图片转为3d效果 <br />3.threejs_tool：待整理 | 1. 原生环境的three.js 基本使用<br />                         | ★☆     |
+| editor_learning<br />                       | 编辑器方向   | 1.**codepen_demo_ori**：一个使用原生的仿codepen项目（fontawesome+）<br /> 2.**codepen_clone_react**：一个使用react的仿codepen项目<br /> | 1. 原生环境、React环境的静态资源加载与渲染<br />2. codeMirror、Ace使用经验 | ★      |
+| realchat_learning<br />（webRTC+webSocket） | 实时通讯方向 | 1. **webrtc_chatapp_react**：一个基于react+node+webrtc的双人视频对话项目<br />2.**websocket_chatapp**：一个基于websocket的双人对话项目 | 1. WebRTC：socket.io➕socket.io-client<br />2. WebSocket：ws  | ★★☆    |
+| chrome_extention                            | 插件方向     | 略                                                           | 1. Chrome 简易插件开发                                       | ★☆     |
+|                                             |              |                                                              |                                                              |        |
+|                                             |              |                                                              |                                                              |        |
 
 
 
 ## 语言、服务端+系统及相关工具
 
-| 名称                                        | 类型         | Github 存档                                                  | 技术点与经验                                                 | Status                                     |
-| ------------------------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------ |
-| node_learning                               | 服务端环境   | 略                                                           | 1. Web+跨域：Express、http、Cors<br />2. 文件：multer、path、fs<br />3. 通信：socket.io、ws<br /> | ★☆<br />                                   |
-| lightserver_learning                        | 服务         | 1.  **http_server_node**：一个http server<br />2. **socket_server_node**：一个socket server<br />3. **socket_server_python**：一些基于socket模拟http等server<br />4.**file_server_node**：一个file upload server | 1. Python、Node基础<br />2. 轻量级基础server搭建             | ★☆                                         |
-| git_learning                                | 工具         | 略                                                           | 1. git push、pull及常见问题<br />2. git actions + gh pages持续部署 | ★★☆<br />[Details](git_learning/readme.md) |
-| docker_learning                             | 工具         | 略                                                           | 1. docker 镜像迁移、部署                                     | ★                                          |
-| nginx_learning                              | 工具         | 略                                                           | 1. 项目部署、翻箱底阿里                                      | ☆                                          |
-| linux_learning                              | 工具         | 略                                                           | 1. Linux 基本指令<br />2. 脚本语言：shell<br />3. 工具：vim、tmux、docker、ssh等 | ★★                                         |
-| realchat_learning<br />（webRTC+webSocket） | 实时通讯方向 | 1. **webrtc_chatapp_react**：一个基于react+node+webrtc的双人视频对话项目<br />2.**websocket_chatapp**：一个基于websocket的双人对话项目 | 1. WebRTC：socket.io➕socket.io-client<br />2. WebSocket：ws  | ★★☆                                        |
+| 名称                 | 类型       | Github 存档                                                  | 技术点与经验                                                 | Status                                     |
+| -------------------- | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------ |
+| node_learning        | 服务端环境 | 略                                                           | 1. Web+跨域：Express、http、Cors<br />2. 文件：multer、path、fs<br />3. 通信：socket.io、ws<br /> | ★☆<br />                                   |
+| lightserver_learning | 服务       | 1.  **http_server_node**：一个http server<br />2. **socket_server_node**：一个socket server<br />3. **socket_server_python**：一些基于socket模拟http等server<br />4.**file_server_node**：一个file upload server | 1. Python、Node基础<br />2. 轻量级基础server搭建             | ★☆                                         |
+| git_learning         | 工具       | 略                                                           | 1. git push、pull及常见问题<br />2. git actions + gh pages持续部署 | ★★☆<br />[Details](git_learning/readme.md) |
+| docker_learning      | 工具       | 略                                                           | 1. docker 镜像迁移、部署                                     | ★                                          |
+| nginx_learning       | 工具       | 略                                                           | 1. 项目部署、反向代理                                        | ★                                          |
+| linux_learning       | 工具       | 略                                                           | 1. Linux 基本指令<br />2. 脚本语言：shell<br />3. 工具：vim、tmux、docker、ssh等 | ★★                                         |
+|                      |            |                                                              |                                                              |                                            |
 
 
 
