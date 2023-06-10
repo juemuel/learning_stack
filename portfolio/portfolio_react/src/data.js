@@ -8,12 +8,12 @@ export const projects = [
     link: "https://juemuel.github.io/share_stack/",
   },
   {
-    title: "Kob Game",
+    title: "Kob Game（已部署）",
     subtitle: "Vue3、BootStrap && SpringBoot",
     description:
-      "一个基于 Vue3、Bootstrap、Spring Boot 的多人联机游戏。",
-    image: "./logo192.png",
-    link: "#",
+      "一个基于 Vue3、Bootstrap、Spring Boot、Spring Cloud 的多人联机游戏。",
+    image: "https://s2.loli.net/2023/06/10/7VhK8UAn9I5vSFB.png",
+    link: "https://app5581.acapp.acwing.com.cn/pk/",
   },
   {
     title: "Weather App",
