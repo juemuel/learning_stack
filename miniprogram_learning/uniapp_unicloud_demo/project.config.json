@@ -1,5 +1,6 @@
 {
-  "appid": "wx4bce14c98744fb19",
+  "miniprogramRoot": "unpackage/dist/dev/mp-weixin/",
+  "appid": "wxe10e1875f615815c",
   "compileType": "miniprogram",
   "libVersion": "2.32.1",
   "packOptions": {
@@ -25,5 +26,6 @@
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "srcMiniprogramRoot": "unpackage/dist/dev/mp-weixin/"
 }
