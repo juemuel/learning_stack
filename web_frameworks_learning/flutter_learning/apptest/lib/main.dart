@@ -19,8 +19,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onMenuPressed;
   final VoidCallback? onSearchPressed;
   final String title;
-  const CustomAppBar({super.key, required this.title, this.onMenuPressed, this.onSearchPressed});
-  
+  const CustomAppBar(
+      {super.key,
+      required this.title,
+      this.onMenuPressed,
+      this.onSearchPressed});
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -51,29 +55,27 @@ class CustomBody extends StatefulWidget {
   @override
   _CustomBodyState createState() => _CustomBodyState();
 }
+
 class _CustomBodyState extends State<CustomBody> {
-
-  
-
   int _counter = 0;
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        const Text('You have pushed the button this manytimes:'),
-        Text('$_counter'),
-        ElevatedButton(
-          child: const Text('Click me'),
-          onPressed: _incrementCounter,
-        )
-      ]
-    )
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text('You have pushed the button this manytimes:'),
+          Text('$_counter'),
+          ElevatedButton(
+            child: const Text('Click me'),
+            onPressed: _incrementCounter,
+          )
+        ]);
   }
 }
 
@@ -94,7 +96,7 @@ class HomePage extends StatelessWidget {
         },
       ),
       // 内容部分
-      body: const CustomBody(),
+      body: CustomBody(),
       // 悬浮按钮
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add',
