@@ -1,111 +1,125 @@
 import 'package:flutter/material.dart';
-
-// MaterialApp、Material、Scaffold
-// Column、Center；Text
-// AppBar(leading: IconButton()、title: Text()、actions: <Widget>[])
-// ElevatedButton、FloatingActionButton
-// GestureDetector(onTap(), child,)
-// <Widget>[自定义()]
-// IOS风格 Cupertino components
-// 一、主入口传入部件
-void main() {
-  runApp(const MaterialApp(
-    title: 'My app',
-    home: HomePage(),
-  ));
+class TodoItem {
+  const TodoItem({required this.name});
+  final String name;
 }
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final VoidCallback? onMenuPressed;
-  final VoidCallback? onSearchPressed;
-  final String title;
-  const CustomAppBar(
-      {super.key,
-      required this.title,
-      this.onMenuPressed,
-      this.onSearchPressed});
+// 定义一个回调函数类型，用于处理待办事项的状态变化
+typedef void TodoStateChangedCallback(TodoItem todoItem, bool completed);
 
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+// 构建子项目列表项的小部件(构造、渲染)
+class TodoListWidget extends StatelessWidget {
+  // 构造函数
+  TodoListWidget({
+    required this.todoItem,
+    required this.completed,
+    required this.onStateChanged,
+  }) : super(key: ObjectKey(todoItem));
+
+  // 待办事项
+  final TodoItem todoItem;
+  // 是否完成
+  final bool completed;
+  // 状态修改时的回调
+  final TodoStateChangedCallback onStateChanged;
+
+  // 获取颜色
+  Color _getColor(BuildContext context) {
+    // 如果任务已完成，返回主题颜色，否则返回灰色
+    return completed ? Theme.of(context).primaryColor : Colors.black54;
+  }
+
+  // 获取文本样式
+  TextStyle? _getTextStyle(BuildContext context) {
+    // 如果任务已完成，返回带有删除线的样式
+    if (completed) {
+      return TextStyle(
+        color: Colors.black54,
+        decoration: TextDecoration.lineThrough,
+      );
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      leading: IconButton(
-        icon: Icon(Icons.menu),
-        tooltip: 'Menu',
-        onPressed: onMenuPressed,
+    return ListTile(
+      // 点击时调用回调函数，更新任务状态
+      onTap: () {
+        onStateChanged(todoItem, !completed);
+      },
+      leading: CircleAvatar(
+        // 圆形头像的颜色根据任务状态变化
+        backgroundColor: _getColor(context),
+        child: Text(todoItem.name[0]),
       ),
       title: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineMedium,
+        todoItem.name,
+        style: _getTextStyle(context),
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.search),
-          tooltip: 'Search',
-          onPressed: onSearchPressed,
-        ),
-      ],
     );
   }
 }
 
-class CustomBody extends StatefulWidget {
+// 主要的待办事项列表小部件
+class TodoList extends StatefulWidget {
+  // 构造函数
+  TodoList({required Key key, required this.todoItems}) : super(key: key);
+
+  // 待办事项列表
+  final List<TodoItem> todoItems;
+
   @override
-  _CustomBodyState createState() => _CustomBodyState();
+  _TodoListState createState() => _TodoListState();
 }
 
-class _CustomBodyState extends State<CustomBody> {
-  int _counter = 0;
-  void _incrementCounter() {
+class _TodoListState extends State<TodoList> {
+  // 用于存储已完成的待办事项
+  Set<TodoItem> _todoList = Set<TodoItem>();
+
+  // 处理待办事项状态变化的回调函数
+  void _handleItemChanged(TodoItem todoItem, bool completed) {
+    // 更新状态并触发重新构建
     setState(() {
-      _counter++;
+      if (completed) {
+        _todoList.add(todoItem);
+      } else {
+        _todoList.remove(todoItem);
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Text('You have pushed the button this manytimes:'),
-          Text('$_counter'),
-          ElevatedButton(
-            child: const Text('Click me'),
-            onPressed: _incrementCounter,
-          )
-        ]);
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: '首页',
-        onMenuPressed: () {
-          // 菜单按钮的回调函数
-          print('Menu button pressed');
-        },
-        onSearchPressed: () {
-          // 搜索按钮的回调函数
-          print('Search button pressed');
-        },
+      appBar: AppBar(
+        title: const Text('To-Do List'),
       ),
-      // 内容部分
-      body: CustomBody(),
-      // 悬浮按钮
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Add',
-        child: const Icon(Icons.add),
-        onPressed: () {
-          // 添加按钮的回调函数
-          print('Add button pressed');
-        },
+      // 使用列表显示待办事项
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        children: widget.todoItems.map((TodoItem todoItem) {
+          return TodoListWidget(
+            todoItem: todoItem,
+            completed: _todoList.contains(todoItem),
+            onStateChanged: _handleItemChanged,
+          );
+        }).toList(),
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    title: 'To-Do App',
+    home: TodoList(
+      key: const Key("todo"),
+      todoItems: const <TodoItem>[
+        TodoItem(name: 'Reading'),
+        TodoItem(name: 'Working'),
+        TodoItem(name: 'Shopping'),
+      ],
+    ),
+  ));
 }
