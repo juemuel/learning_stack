@@ -1,12 +1,24 @@
+// main01 首页
 import 'package:flutter/material.dart';
 
-// MaterialApp、Material、Scaffold
-// Column、Center; Text
-// AppBar(leading: IconButton()、title: Text()、actions: <Widget>[])
-// ElevatedButton、FloatingActionButton
-// GestureDetector(onTap(), child,)
+// 一、框架
+// MaterialApp(title, home)、Material()、Scaffold()
+// 二、布局与容器
+// Row()横布局、Column()垂直布局、Center(); Container()方块容器、Expanded()弹性容器默认flex为1填满
+// 三、基础组件
+// Text()文本、AppBar()、ElevatedButton、FloatingActionButton、ListTile显列表
+// GestureDetector()
 // <Widget>[自定义()]
 // IOS风格 Cupertino components
+// 四、参数
+// Image.network(URL)
+// Color.xxxAccent
+// 五、常见属性
+// 标题与文本：leading、title、''文本
+// 内容：home、child
+// 颜色与样式：backgroundColor、decoration、color；style、height、width、mainAxisAlignment、CrossAxisAlignment
+// 行为：onTap()、actions
+
 // 一、主入口传入部件
 void main() {
   runApp(const MaterialApp(
