@@ -2,9 +2,14 @@
 import 'package:flutter/material.dart';
 
 // 一、框架
-// MaterialApp(title, home)、Material()、Scaffold()
+// MaterialApp(title, home)、Material()、Scaffold(appBar, body)
 // 二、布局与容器
-// Row()横布局、Column()垂直布局、Center(); Container()方块容器、Expanded()弹性容器默认flex为1填满
+// Row()横布局、Column()垂直布局、Center()居中布局;
+// Container(decoration, child)方块容器
+// Expanded() 弹性容器默认flex为1填满
+// NestedScrollView(headerSliverBuilder, body) 带悬浮标题的滚动容器
+// SingleChildScrollView(child) 单部件滚动容器
+// BoxDecoration(color) 样式容器
 // 三、基础组件
 // Text()文本、AppBar()、ElevatedButton、FloatingActionButton、ListTile显列表
 // GestureDetector()
