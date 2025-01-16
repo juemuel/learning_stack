@@ -1,4 +1,12 @@
 # Common_Web
+## 如何运行
+本质是一些html文件，可以在vsCode按照以下步骤操作：
+
+1. 安装Live Server插件
+2. 在VSCode中打开你想要运行的HTML文件
+3. 启动Live Server：在编辑器的右下角，你会看到 Go Live 按钮，点击它。
+
+这将会启动Live Server，并在默认浏览器中自动打开HTML文件。
 
 ## 内容结构
 
@@ -17,12 +25,9 @@
   - [TD]QRCode扫描器
   - [TD]虚浮工具（聊天助手）
   - [TD]密码强弱工具
-- ☆☆☆ popDemo：弹窗案例工具箱
+- ☆☆☆ popModalDemo：弹窗案例工具箱
   - [TD]cookeDemo
   - [TD]netWorkDemo
-
-
-
 
 ## 一、图片画廊
 ### 内容描述

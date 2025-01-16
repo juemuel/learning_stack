@@ -1,0 +1,138 @@
+/* 音乐播放器样式 */
+.music-player {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    min-height: 500px;
+    background-color: #f7f7f8;
+    border-radius: 20px;
+    padding: 25px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+
+/* 背景与专辑封面 */
+.album-art {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.album-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.player-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.song-name {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.artist-name {
+    font-size: 1.1em;
+    color: #777;
+}
+
+/* 播放控制按钮 */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.loop-button,
+.playlist-button {
+    font-size: 16px;
+}
+
+.prev-button,
+.next-button {
+    font-size: 28px;
+}
+
+.play-button {
+    font-size: 44px;
+}
+
+.playlist-button i {
+    color: #5f6368;
+}
+
+.prev-button i,
+.next-button i {
+    color: #3b3b3b;
+}
+
+.play-button i {
+    color: #2196F3;
+}
+
+/* 音量控制 */
+.volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+.volume-slider {
+    width: 80%;
+    appearance: none;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.volume-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* 进度条 */
+.progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.progress-bar {
+    width: 100%;
+    appearance: none;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.current-time,
+.total-time {
+    font-size: 1em;
+    color: #555;
+}

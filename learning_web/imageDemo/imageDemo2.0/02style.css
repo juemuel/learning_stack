@@ -105,7 +105,7 @@ input,button,i{
   width: 210px;
   max-width: 200px; 
   max-width: 95%;*/
- /* m2:自动列宽换 子项不用设宽 */  
+ /* m2:自动列宽换 子项不用设宽 */
   list-style: none;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -135,7 +135,6 @@ input,button,i{
   position: absolute;
   /* 先放在底部，用于动画底部出现，变成0 */
   bottom: -100px;
-  
   /* 结构布局：由于使用标准盒模型，padding 的值会增加元素的实际宽度，导致元素超出父容器的边界。 */
   /* 故采用cal调整或将内容嵌套在子元素中 */
   width: calc(100% - 2 * 20px);

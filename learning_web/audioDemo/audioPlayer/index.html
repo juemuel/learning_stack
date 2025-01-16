@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+  <div class="music-player">
+    <!-- 背景与专辑封面 -->
+    <div class="player-header">
+      <h2 class="song-name" id="songName">Song Name</h2>
+      <div class="artist-name" id="artistName">Artist Name</div>
+    </div>
+    <div class="album-art">
+      <img src="" alt="专辑封面" class="album-image" id="albumArt">
+    </div>
+    
+    <!-- 音量与进度条 -->
+    <div class="volume-control">
+      <input type="range" min="0" max="1" step="0.01" id="volumeSlider" class="volume-slider">
+      <i id="volumeIcon" class="volume-icon"></i>
+    </div>
+    <div class="progress">
+      <span class="current-time" id="currentTime">00:00</span>
+      <input type="range" id="progressBar" min="0" value="0" step="0.01" class="progress-bar">
+      <span class="total-time" id="totalTime">00:00</span>
+    </div>
+
+    <!-- 播放控制 -->
+    <div class="controls">
+      <button id="loopButton" class="loop-button">
+        <i id="loopIcon" class="fas fa-sort-amount-down-alt"></i> <!-- 播放模式 -->
+      </button>
+      <button id="prevButton" class="prev-button">
+        <i class="fas fa-backward"></i> <!-- 上一首 -->
+      </button>
+
+      <button id="playPauseButton" class="play-button">
+        <i id="playPauseIcon" class="fas fa-play"></i> <!-- 播放/暂停 -->
+      </button>
+
+      <button id="nextButton" class="next-button">
+        <i class="fas fa-forward"></i> <!-- 下一首 -->
+      </button>
+
+      <button id="playlistButton" class="playlist-button">
+        <i class="fas fa-list-ul"></i> <!-- 播放列表 -->
+      </button>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
