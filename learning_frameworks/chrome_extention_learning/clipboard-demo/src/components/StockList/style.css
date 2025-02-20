@@ -1,0 +1,64 @@
+#codeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#codeList li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stock-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.stock-code {
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.stock-name {
+  color: #666;
+  flex: 1;
+}
+
+.add-to-group-icon {
+  cursor: pointer;
+  color: #4CAF50;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+.add-to-group-icon:hover {
+  color: #45a049;
+}
+
+.batch-save {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.batch-save-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.batch-save-btn:hover {
+  background-color: #1976D2;
+}
