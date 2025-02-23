@@ -13,15 +13,20 @@ export default class StockList {
   // 更新股票代码列表
   async updateCodes(codes) {
     this.codeList.innerHTML = '';
-    for (const code of codes) {
+    const stockPromises = codes.map(code => this.stockService.getStockInfo(code));
+    const stockInfos = await Promise.all(stockPromises);
+
+    codes.forEach((code, index) => {
       const li = document.createElement('li');
-      const stockInfo = await this.stockService.getStockInfo(code);
+      const stockInfo = stockInfos[index];
       
       li.innerHTML = `
         <div class="stock-info">
-          <span class="stock-code">${code}</span>
-          <span class="stock-name">${stockInfo?.name || code}</span>
-          <span class="add-to-group-icon">+</span>
+          <div class="stock-details">
+            <span class="stock-code">${code}</span>
+            <span class="stock-name">${stockInfo?.name || code}</span>
+          </div>
+          <span class="add-to-group-icon" title="添加到分组">+</span>
         </div>
       `;
       
@@ -33,7 +38,7 @@ export default class StockList {
       });
       
       this.codeList.appendChild(li);
-    }
+    });
     
     // 添加批量保存按钮
     const batchSaveDiv = document.createElement('div');

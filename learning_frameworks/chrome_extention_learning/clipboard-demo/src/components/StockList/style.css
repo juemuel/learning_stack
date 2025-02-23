@@ -1,64 +1,73 @@
+/* 股票列表样式 */
 #codeList {
-  list-style: none;
-  padding: 0;
   margin: 0;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-#codeList li {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0;
+  list-style: none;
 }
 
 .stock-info {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex: 1;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.stock-info:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
 }
 
 .stock-code {
   font-weight: bold;
-  min-width: 80px;
+  color: #333;
+  margin-right: 8px;
 }
 
 .stock-name {
   color: #666;
-  flex: 1;
+  flex-grow: 1;
 }
 
 .add-to-group-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4CAF50;
+  color: white;
+  border-radius: 50%;
   cursor: pointer;
-  color: #4CAF50;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 10px;
-  transition: color 0.3s;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
 }
 
 .add-to-group-icon:hover {
-  color: #45a049;
+  background: #45a049;
 }
 
 .batch-save {
-  margin-top: 10px;
-  text-align: center;
+  margin-top: 16px;
+  padding: 0 12px;
 }
 
 .batch-save-btn {
-  background-color: #2196F3;
+  width: 100%;
+  padding: 10px;
+  background: #2196F3;
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  width: 100%;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
 .batch-save-btn:hover {
-  background-color: #1976D2;
+  background: #1976D2;
 }

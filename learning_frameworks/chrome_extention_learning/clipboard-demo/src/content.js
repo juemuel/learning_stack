@@ -9,42 +9,24 @@ document.addEventListener('copy', async (e) => {
     console.log('剪贴板内容:', text);
     
     // 从剪贴板内容中提取股票代码
-    const regex = /(?:\((sh|sz)?([0-9]{6})\))|(?:^|\s)(sh|sz)?([0-9]{6})(?:\s|$)|(?:([0-9]{4,5}\.(?:HK|hk)))(?:\s|$)/gi;
-    const matches = [];
-    let match;
-    while ((match = regex.exec(text)) !== null) {
-      let code;
-      let prefix;
-      
-      if (match[2]) { // 括号内的6位数字
-        code = match[2];
-        prefix = match[1];
-      } else if (match[4] && match[5]) { // 非括号内的6位数字
-        code = match[5];
-        prefix = match[4];
-      } else if (match[6]) { // 港股代码
-        matches.push(match[6]);
-        continue;
-      } else {
-        continue;
+    const regex = /(?:\((?:sh|sz)?[0-9]{6}\))|(?:^|\s)(?:sh|sz)?[0-9]{6}(?:\s|$)|(?:[0-9]{4,5}\.(?:HK|hk))(?:\s|$)/gi; // 更严格的股票代码匹配
+    const clipboardCodes = [...new Set(text.match(regex) || [])].map(code => {
+      // 提取括号内的内容，如果有的话
+      const bracketMatch = code.match(/\(([^)]+)\)/);
+      if (bracketMatch) {
+        code = bracketMatch[1];
       }
-      
-      // 移除可能存在的市场前缀
+      // 清理代码，移除多余的空格
+      code = code.trim();
+      // 如果代码已经包含sh或sz前缀，先移除它
       code = code.replace(/^(sh|sz)/i, '');
-      
-      // 根据股票代码规则添加正确的市场前缀
-      if (prefix) {
-        // 如果有前缀，使用原有前缀
-        code = prefix.toLowerCase() + code;
-      } else {
-        // 如果没有前缀，根据编号规则判断
+      // 如果代码是6位数字，根据规则添加前缀
+      if (/^\d{6}$/.test(code)) {
         code = code.startsWith('6') ? 'sh' + code : 'sz' + code;
       }
-      
-      matches.push(code);
-    }
-    const clipboardCodes = [...new Set(matches)];
-    console.log('从剪贴板提取的原始匹配:', matches);
+      return code;
+    });
+    console.log('从剪贴板提取的原始匹配:', text.match(regex));
     console.log('处理后的股票代码:', clipboardCodes);
     
     if (clipboardCodes.length > 0) {
@@ -63,53 +45,37 @@ document.addEventListener('copy', async (e) => {
 // 扫描页面，提取股票代码
 function extractStockCodes() {
   console.log('开始扫描页面文本');
-  const regex = /(?:\((sh|sz)?([0-9]{6})\))|(?:^|\s)(sh|sz)?([0-9]{6})(?:\s|$)|(?:([0-9]{4,5}\.(?:HK|hk)))(?:\s|$)/gi;
+  const regex = /(?:\((sh|sz)?(\d{6})\))|(?:^|\s)((sh|sz)?(\d{6}))(?:\s|$)|(?:([0-9]{4,5}\.(HK|hk)))(?:\s|$)/gi; // 更严格的股票代码匹配
   const text = document.body.innerText;
   console.log('页面文本内容:', text.substring(0, 200) + '...');
   const matches = [];
   let match;
-  
   while ((match = regex.exec(text)) !== null) {
-    let code;
-    let prefix;
-    
-    if (match[1] && match[2]) { // 匹配到 (sh/sz)123456
-      code = match[2];
-      prefix = match[1];
-    } else if (match[3] && match[4]) { // 匹配到 sh/sz123456
-      code = match[4];
-      prefix = match[3];
-    } else if (match[5]) { // 匹配到 1234.HK
-      matches.push(match[5]);
-      continue;
-    } else {
-      continue;
-    }
-    
-    // 移除可能存在的市场前缀
-    code = code.replace(/^(sh|sz)/i, '');
-    
-    // 根据股票代码规则添加正确的市场前缀
-    if (prefix) {
-      // 如果有前缀，统一格式化
-      code = prefix.toLowerCase() + code;
-    } else {
-      // 如果没有前缀，根据编号规则判断
-      code = code.startsWith('6') ? 'sh' + code : 'sz' + code;
-    }
-    
-    matches.push(code);
+      let code;
+      if (match[1] && match[2]) { // 匹配到 (sh/sz)123456
+          code = match[1] + match[2];
+      } else if (match[3] && match[4]) { // 匹配到 sh/sz123456
+          code = match[3] + match[4];
+      } else if (match[5] && match[6]) { // 匹配到 1234.HK
+          code = match[5];
+      } else if (match[2]) { // 匹配到 (123456)
+          code = 'sz' + match[2];
+      } else if (match[4]) { // 匹配到 123456
+          code = 'sz' + match[4];
+      } else if (match[5]) { // 匹配到 1234.HK
+          code = match[5];
+      }
+      matches.push(code);
   }
-  
   const uniqueMatches = [...new Set(matches)];
   console.log('从页面提取的原始匹配:', matches);
   console.log('处理后的股票代码:', uniqueMatches);
   return uniqueMatches;
 }
   
-// 当页面加载完成时，发送股票代码到背景脚本
-window.addEventListener("load", () => {
-  console.log('加载完成');
-  const codes = extractStockCodes();
-  chrome.runtime.sendMessage({ action: "updateCodes", codes: codes });
-});
+  // 当页面加载完成时，发送股票代码到背景脚本
+  window.addEventListener("load", () => {
+    console.log('加载完成');
+    const codes = extractStockCodes();
+    chrome.runtime.sendMessage({ action: "updateCodes", codes: codes });
+  });

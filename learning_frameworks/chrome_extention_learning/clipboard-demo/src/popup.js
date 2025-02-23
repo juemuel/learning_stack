@@ -17,31 +17,4 @@ document.addEventListener("DOMContentLoaded", () => {
   groupList.loadGroups();
   // 初始化保存模态框
   const saveModal = new SaveModal();
-  // 批量保存按钮事件处理
-  const saveAllBtn = document.getElementById('saveAllBtn');
-  saveAllBtn.addEventListener('click', () => {
-    saveModal.show('batch');
-  });
-  // 为每个股票项添加单独保存按钮
-  const addSaveButtonToStockItems = () => {
-    const stockItems = document.querySelectorAll('#codeList li');
-    stockItems.forEach(item => {
-      const stockCode = item.querySelector('.stock-info').textContent.split(' - ')[0];
-      const saveBtn = document.createElement('button');
-      saveBtn.className = 'save-btn';
-      saveBtn.textContent = '保存';
-      saveBtn.addEventListener('click', () => {
-        saveModal.show('single', stockCode);
-      });
-      item.appendChild(saveBtn);
-    });
-  };
-  // 监听股票列表更新
-  const observer = new MutationObserver(() => {
-    addSaveButtonToStockItems();
-  });
-  observer.observe(document.getElementById('codeList'), {
-    childList: true,
-    subtree: true
-  });
 });
