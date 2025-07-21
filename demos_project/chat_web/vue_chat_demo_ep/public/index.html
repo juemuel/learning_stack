@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script src="https://oss.yhchmo.com/static/vConsole/3.15.0/vconsole.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/@vant/touch-emulator"></script>
+    <script>
+      let uaStr = navigator.userAgent.toLowerCase()
+      localStorage.setItem('visitBrowser', "");
+      const isWeChat = /micromessenger/.test(uaStr)
+      const isDingTalk = /DingTalk/i.test(uaStr)
+      const isMobile = /mobile/.test(uaStr)
+      const isPC = !isMobile && !isWeChat && !isDingTalk
+      if (uaStr != undefined && uaStr != null && uaStr != null) {
+        if (isWeChat) {
+          localStorage.setItem('visitBrowser', "wx_jsapi");
+        } else if (isDingTalk) {
+          localStorage.setItem('visitBrowser', "dingtalk");
+        } else if (isMobile) {
+          localStorage.setItem('visitBrowser', "mobile_web");
+        } else {
+          localStorage.setItem('visitBrowser', 'pc_web')
+        }
+      }
+      // 屏蔽微信分享功能  
+      document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.call('hideOptionMenu');
+      });
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

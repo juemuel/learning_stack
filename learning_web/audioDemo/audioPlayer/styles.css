@@ -3,14 +3,88 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+    height: auto;
     min-height: 500px;
-    background-color: #f7f7f8;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 20px;
     padding: 25px 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: auto;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .music-player {
+        margin: 10px;
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    .album-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .song-name {
+        font-size: 1.4em;
+    }
+}
+
+/* 加载状态 */
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 按钮禁用状态 */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    transform: none;
+}
+
+/* 滑块样式优化 */
+.volume-slider::-webkit-slider-thumb,
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.volume-slider::-moz-range-thumb,
+.progress-bar::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 错误提示样式 */
+.error-message {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #ff6b6b;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 0.9em;
 }
 
 /* 背景与专辑封面 */
