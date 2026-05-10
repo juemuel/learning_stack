@@ -26,6 +26,7 @@ current_deploy.sh
 .idea
 .vscode
 .worktrees/
+.claude/
 **/unpackage/
 **/.vitepress/
 
