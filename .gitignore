@@ -25,6 +25,7 @@ current_deploy.sh
 # 忽略开发工具相关的文件
 .idea
 .vscode
+.worktrees/
 **/unpackage/
 **/.vitepress/
 
