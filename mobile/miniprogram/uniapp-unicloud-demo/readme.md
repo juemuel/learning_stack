@@ -1,5 +1,16 @@
-# uni-app_learning
-## 留言板小程序+unicloud
-### 预览图
+# UniApp 留言墙
 
-<img src="https://s2.loli.net/2023/05/28/P6ZwnWHOJLs8Ch2.png" alt="image-20230528203753270" style="zoom:50%;" />
+基于 UniApp + UniCloud 的留言墙应用。
+
+## 技术栈
+- UniApp, UniCloud
+
+## 功能
+- 图片/文本上传与删除
+- API 请求
+- 底部导航栏
+
+## 知识点
+- 云函数使用
+- 云数据库操作
+- 小程序路由与 TabBar

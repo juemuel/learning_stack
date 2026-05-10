@@ -1,4 +1,10 @@
-# Vue_Common_Demo
+# Admin Dashboard (Vue + Element UI)
 
-- LoginView01
-- HomeView
+后台管理系统。
+
+## 技术栈
+- Vue, Element UI
+
+## 知识点
+- Element UI 组件使用
+- 后台管理布局

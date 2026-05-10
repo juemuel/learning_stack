@@ -1,3 +1,10 @@
-# Title
+# React Native Learning
 
-待补充
+React Native 移动端开发。
+
+## 技术栈
+- React Native, Expo
+
+## 知识点
+- Expo 环境搭建
+- React Native 组件
